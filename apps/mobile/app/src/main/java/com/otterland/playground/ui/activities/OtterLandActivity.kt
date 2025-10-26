@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.foundation.imageloader.coil.core.CoilNetworkImageLoader
 import com.otterland.OtterLand.ui.activities.ui.OtterLandApp
+import com.otterland.foundation.design.theme.OtterLandTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -15,10 +16,8 @@ class OtterLandActivity : ComponentActivity() {
     @Inject lateinit var imageLoader: CoilNetworkImageLoader
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val splashScreen = installSplashScreen()
+        installSplashScreen()
         super.onCreate(savedInstanceState)
-
-        splashScreen.setKeepOnScreenCondition { true }
 
         setContent {
             OtterLandApp()

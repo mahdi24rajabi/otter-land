@@ -40,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":libs:foundation:design"))
+
     implementation(project(":libs:imageloader:api"))
     implementation(project(":libs:imageloader:coil:ui"))
     implementation(project(":libs:imageloader:coil:network:api"))
