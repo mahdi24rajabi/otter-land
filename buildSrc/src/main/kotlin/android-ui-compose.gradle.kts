@@ -13,6 +13,7 @@ dependencies {
     add("implementation", libs.findLibrary("ui.compose.adaptive").get())
     add("implementation", libs.findLibrary("ui.compose.activity").get())
     add("implementation", libs.findLibrary("ui.compose.viewmodel").get())
+    add("implementation", libs.findLibrary("ui.compose.google.fonts").get())
     add("implementation", libs.findLibrary("ui.navigation.compose").get())
 
     add("debugImplementation", libs.findLibrary("ui.compose.tools").get())
