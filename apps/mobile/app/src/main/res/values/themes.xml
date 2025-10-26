@@ -15,7 +15,7 @@
 
         <item name="splashScreenIconSize">240dp</item>
         <item name="windowSplashScreenBackground">@color/OtterLandGreen</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_screen</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_screen</item>
         <item name="windowSplashScreenAnimationDuration">@integer/splash_screen_duration</item>
     </style>
 </resources>

@@ -18,10 +18,10 @@ class OtterLandActivity : ComponentActivity() {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
 
+        splashScreen.setKeepOnScreenCondition { true }
+
         setContent {
             OtterLandApp()
         }
-
-
     }
 }
