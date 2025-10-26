@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Otter Land</string>
+    <integer name="splash_screen_duration">5000</integer>
+</resources>
