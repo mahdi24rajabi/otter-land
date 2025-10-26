@@ -1,14 +1,8 @@
 package com.otterland.OtterLand.ui.activities.ui
 
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.Composable
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.otterland.foundation.design.theme.OtterLandTheme
 import com.otterland.playground.ui.activities.navigation.createNavHost
 
