@@ -1,10 +1,9 @@
 package com.otterland.OtterLand.ui.activities.ui
 
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.otterland.foundation.design.theme.OtterLandTheme
-import com.otterland.playground.ui.activities.navigation.createNavHost
+import com.otterland.playground.ui.activities.ui.OtterLandAppScreen
 
 @Preview
 @Composable
@@ -12,30 +11,19 @@ fun OtterLandAppPreview() {
     OtterLandApp()
 }
 
+private enum class DeviceType {
+    COMPACT,
+    MEDIUM,
+    EXPANDED,
+    LARGE,
+    EXTRA_LARGE,
+}
+
 @Composable
-fun OtterLandApp(){
-    val navHost = createNavHost()
+fun OtterLandApp() {
+//    createNavHost(navController)
+
     OtterLandTheme {
-        Scaffold(
-            topBar = { OtterLandTopBar() },
-            bottomBar = { OtterLandBottomBar() },
-        ) { innerPadding ->
-            OtterLandHomeScreen()
-        }
+        OtterLandAppScreen()
     }
-}
-
-@Composable
-fun OtterLandTopBar() {
-
-}
-
-@Composable
-fun OtterLandBottomBar() {
-
-}
-
-@Composable
-fun OtterLandHomeScreen(){
-
 }

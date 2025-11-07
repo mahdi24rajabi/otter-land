@@ -11,8 +11,11 @@ dependencies {
     add("implementation", libs.findLibrary("ui.compose.material3").get())
     add("implementation", libs.findLibrary("ui.compose.preview").get())
     add("implementation", libs.findLibrary("ui.compose.adaptive").get())
+    add("implementation", libs.findLibrary("ui.compose.adaptive.layout").get())
+    add("implementation", libs.findLibrary("ui.compose.adaptive.navigation").get())
     add("implementation", libs.findLibrary("ui.compose.activity").get())
     add("implementation", libs.findLibrary("ui.compose.viewmodel").get())
+    add("implementation", libs.findLibrary("ui.compose.navigation.suit").get())
     add("implementation", libs.findLibrary("ui.compose.google.fonts").get())
     add("implementation", libs.findLibrary("ui.navigation.compose").get())
 

@@ -11,12 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OtterLand"
+        android:resizeableActivity="true"
+        android:enableOnBackInvokedCallback="true"
         android:name=".ui.activities.OtterLandApplication">
 
         <activity
             android:name=".ui.activities.OtterLandActivity"
             android:exported="true"
             android:theme="@style/Theme.OtterLand"
+            android:windowSoftInputMode="adjustResize"
+            android:resizeableActivity="true"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

@@ -62,6 +62,9 @@ ui-compose-material3 = { module = "androidx.compose.material3:material3"}
 ui-compose-preview = { module = "androidx.compose.ui:ui-tooling-preview"}
 ui-compose-tools = { module = "androidx.compose.ui:ui-tooling"}
 ui-compose-adaptive = { module = "androidx.compose.material3.adaptive:adaptive"}
+ui-compose-adaptive-layout = { module = "androidx.compose.material3.adaptive:adaptive-layout"}
+ui-compose-adaptive-navigation = { module = "androidx.compose.material3.adaptive:adaptive-navigation"}
+ui-compose-navigation-suit = { module = "androidx.compose.material3:material3-adaptive-navigation-suite"}
 ui-compose-activity = { module = "androidx.activity:activity-compose", version.ref = "ui-compose-activity"}
 ui-compose-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "ui-compose-viewmodel"}
 ui-compose-google-fonts = { module = "androidx.compose.ui:ui-text-google-fonts", version.ref = "ui-compose-fonts"}
