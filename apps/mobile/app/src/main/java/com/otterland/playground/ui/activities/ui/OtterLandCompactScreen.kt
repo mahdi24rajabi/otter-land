@@ -1,10 +1,16 @@
 package com.otterland.playground.ui.activities.ui
 
 import android.content.res.Configuration
-import android.content.res.Configuration.UI_MODE_TYPE_TELEVISION
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBarItemDefaults
+import androidx.compose.material3.NavigationItemColors
+import androidx.compose.material3.NavigationItemIconPosition
+import androidx.compose.material3.NavigationRailItem
+import androidx.compose.material3.NavigationRailItemColors
+import androidx.compose.material3.ShortNavigationBarItem
+import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteDefaults
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
@@ -14,13 +20,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Devices.PIXEL
-import androidx.compose.ui.tooling.preview.Devices.TV_1080p
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.window.core.layout.WindowSizeClass
 import com.otterland.foundation.design.theme.OtterLandTheme
 import com.otterland.playground.R
+import com.outterland.feature.systeminfo.ui.SystemInfoScreen
 
 
 enum class NavigationItems(
@@ -39,10 +44,10 @@ enum class NavigationItems(
 
 @Composable
 @Preview(
-    uiMode = UI_MODE_TYPE_TELEVISION,
-    device = TV_1080p
+    uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_DESK,
+    device = "id:Nexus S",
 )
-fun OtterLandCompactTVScreenPreview() {
+fun OtterLandCompactScreenPreview() {
     OtterLandTheme {
         OtterLandAppScreen()
     }
@@ -51,20 +56,9 @@ fun OtterLandCompactTVScreenPreview() {
 @Composable
 @Preview(
     uiMode = Configuration.UI_MODE_TYPE_NORMAL,
-    device = PIXEL
+    device = "spec:width=1920dp,height=1080dp,dpi=160",
 )
-fun OtterLandCompactMobileScreenPreview() {
-    OtterLandTheme {
-        OtterLandAppScreen()
-    }
-}
-
-@Composable
-@Preview(
-    uiMode = Configuration.UI_MODE_TYPE_NORMAL,
-    device = "spec:parent=pixel_tablet,navigation=buttons",
-)
-fun OtterLandCompactTabletScreenPreview() {
+fun OtterLandMeduimScreenPreview() {
     OtterLandTheme {
         OtterLandAppScreen()
     }
@@ -72,60 +66,112 @@ fun OtterLandCompactTabletScreenPreview() {
 
 @Composable
 fun OtterLandAppScreen(
-    windowSizeClass: WindowSizeClass = currentWindowAdaptiveInfo(true).windowSizeClass
+    adaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(true)
 ) {
     var currentNavigationItem by rememberSaveable { mutableStateOf(NavigationItems.SYSTEM_INFO) }
 
-    val navigationColors = NavigationSuiteDefaults.colors(
-        navigationBarContainerColor = MaterialTheme.colorScheme.onPrimary,
-        navigationBarContentColor = MaterialTheme.colorScheme.primary,
+    val navigationSuiteColor = NavigationSuiteDefaults.colors(
+        shortNavigationBarContainerColor = MaterialTheme.colorScheme.surfaceContainer,
+        shortNavigationBarContentColor = MaterialTheme.colorScheme.surfaceContainer,
+        navigationBarContainerColor = MaterialTheme.colorScheme.surfaceContainer,
+        navigationBarContentColor = MaterialTheme.colorScheme.surfaceContainer,
+        navigationRailContainerColor = MaterialTheme.colorScheme.surfaceContainer,
+        navigationRailContentColor = MaterialTheme.colorScheme.surfaceContainer,
+        navigationDrawerContainerColor = MaterialTheme.colorScheme.surfaceContainer,
+        navigationDrawerContentColor = MaterialTheme.colorScheme.surfaceContainer,
     )
 
-    val navigationItemColors = NavigationSuiteDefaults.itemColors(
-        navigationBarItemColors = NavigationBarItemDefaults.colors(
-            disabledIconColor = MaterialTheme.colorScheme.onSurface,
-            selectedIconColor = MaterialTheme.colorScheme.onPrimary,
-            indicatorColor = MaterialTheme.colorScheme.secondary,
-        )
+    val navigationBarColors = NavigationItemColors(
+        selectedIndicatorColor = MaterialTheme.colorScheme.secondaryContainer,
+        selectedTextColor = MaterialTheme.colorScheme.secondary,
+        selectedIconColor = MaterialTheme.colorScheme.onSecondaryContainer,
+        unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        disabledIconColor = MaterialTheme.colorScheme.onSurface,
+        disabledTextColor = MaterialTheme.colorScheme.background,
     )
 
-    val navigationSuiteType = when {
-        windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND) -> {
-            NavigationSuiteType.NavigationRail
+    val navigationItemColors = NavigationRailItemColors(
+        selectedIndicatorColor = MaterialTheme.colorScheme.secondaryContainer,
+        selectedTextColor = MaterialTheme.colorScheme.secondary,
+        selectedIconColor = MaterialTheme.colorScheme.onSecondaryContainer,
+        unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        disabledIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        disabledTextColor = MaterialTheme.colorScheme.background,
+    )
+
+    val navigationSuiteType =
+        with(adaptiveInfo.windowSizeClass) {
+            when (minWidthDp) {
+                in 0 until 600 -> {
+                    NavigationSuiteType.ShortNavigationBarCompact
+                }
+
+                in 600 until 800 -> {
+                    NavigationSuiteType.ShortNavigationBarMedium
+                }
+
+                else -> NavigationSuiteType.WideNavigationRailCollapsed
+            }
         }
 
-        windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_EXPANDED_LOWER_BOUND) -> {
-            NavigationSuiteType.WideNavigationRailCollapsed
-        }
-
-        else -> NavigationSuiteType.NavigationBar
-    }
 
     NavigationSuiteScaffold(
-        layoutType = navigationSuiteType,
-        contentColor = MaterialTheme.colorScheme.background,
-        containerColor = MaterialTheme.colorScheme.onBackground,
-        navigationSuiteColors = navigationColors,
-        navigationSuiteItems = {
+        navigationItems = {
             NavigationItems.entries.forEach { value ->
-                item(
-                    icon = {
-                        Icon(painter = painterResource(value.iconResource), contentDescription = "")
-                    },
-                    selected = currentNavigationItem == value,
-                    enabled = true,
-                    onClick = {
-                        currentNavigationItem = value
-                    },
-                    colors = navigationItemColors
-                )
+                if (navigationSuiteType == NavigationSuiteType.WideNavigationRailCollapsed) {
+                    NavigationRailItem(
+                        icon = {
+                            Icon(
+                                painter = painterResource(value.iconResource),
+                                contentDescription = ""
+                            )
+                        },
+                        selected = currentNavigationItem == value,
+                        enabled = true,
+                        onClick = {
+                            currentNavigationItem = value
+                        },
+                        alwaysShowLabel = false,
+                        colors = navigationItemColors,
+                    )
+                } else {
+                    ShortNavigationBarItem(
+                        icon = {
+                            Icon(
+                                painter = painterResource(value.iconResource),
+                                contentDescription = ""
+                            )
+                        },
+                        selected = currentNavigationItem == value,
+                        enabled = true,
+                        onClick = {
+                            currentNavigationItem = value
+                        },
+                        label = { "" },
+                        iconPosition = NavigationItemIconPosition.Start,
+                        interactionSource = null,
+                        colors = navigationBarColors
+                    )
+                }
             }
         },
+        navigationSuiteType = navigationSuiteType,
+        navigationSuiteColors = navigationSuiteColor,
+        navigationItemVerticalArrangement = NavigationSuiteDefaults.verticalArrangement,
+        primaryActionContent = {},
     ) {
-        when (currentNavigationItem) {
-            NavigationItems.SYSTEM_INFO -> {}
-            NavigationItems.FIREBASE -> {}
-            else -> {}
+        Box(
+            modifier = Modifier.fillMaxSize()
+        ){
+            when (currentNavigationItem) {
+                NavigationItems.SYSTEM_INFO -> {
+                    SystemInfoScreen()
+                }
+                NavigationItems.FIREBASE -> {}
+                else -> {}
+            }
         }
     }
 }

@@ -51,5 +51,8 @@ dependencies {
     implementation(project(":libs:foundation:network:api"))
     implementation(project(":libs:foundation:network:okhttp"))
 
+    implementation(project(":feature:systeminfo"))
+    implementation(project(":data:systeminfo"))
+
     implementation(libs.androidx.spashscreen)
 }
