@@ -8,7 +8,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 object AppScreen
-object HomeScreen
 
 fun NavGraphBuilder.appScreenDestinations(navController: NavController) {
     composable<AppScreen> {
