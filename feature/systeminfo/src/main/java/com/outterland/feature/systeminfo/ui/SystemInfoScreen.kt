@@ -1,17 +1,10 @@
 package com.outterland.feature.systeminfo.ui
 
-import androidx.compose.material3.Icon
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
-import androidx.compose.material3.adaptive.layout.AnimatedPane
-import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffold
-import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffoldRole
-import androidx.compose.material3.adaptive.navigation.BackNavigationBehavior
-import androidx.compose.material3.adaptive.navigation.NavigableListDetailPaneScaffold
-import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaffoldNavigator
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.key
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.outterland.feature.systeminfo.R
 
 @Composable
@@ -31,27 +24,8 @@ enum class Category(
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
-fun SystemInfoScreen() {
-    val listNavigator = rememberListDetailPaneScaffoldNavigator<Category>()
+fun SystemInfoScreen(
+    navController: NavController = rememberNavController()
+) {
 
-    NavigableListDetailPaneScaffold(
-        navigator = listNavigator,
-        defaultBackBehavior = BackNavigationBehavior.Companion.PopUntilScaffoldValueChange,
-        listPane = {
-            AnimatedPane {
-                Category.entries.forEachIndexed { index, category ->
-
-                    Icon(
-                        painter = painterResource(category.iconResourceId),
-                        contentDescription = "",
-                    )
-                }
-            }
-        },
-        detailPane = {
-            AnimatedPane {
-
-            }
-        }
-    )
 }

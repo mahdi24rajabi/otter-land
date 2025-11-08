@@ -1,8 +1,6 @@
 package com.otterland.playground.ui.activities.ui
 
 import android.content.res.Configuration
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationItemColors
@@ -20,11 +18,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.otterland.foundation.design.theme.OtterLandTheme
 import com.otterland.playground.R
+import com.otterland.playground.ui.activities.ui.navigation.HomeScreen
 import com.outterland.feature.systeminfo.ui.SystemInfoScreen
 
 
@@ -44,12 +46,12 @@ enum class NavigationItems(
 
 @Composable
 @Preview(
-    uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_DESK,
+    uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_DESK,
     device = "id:Nexus S",
 )
-fun OtterLandCompactScreenPreview() {
+fun OtterLandHomeScreenPreview() {
     OtterLandTheme {
-        OtterLandAppScreen()
+        OtterLandHomeScreen()
     }
 }
 
@@ -58,15 +60,16 @@ fun OtterLandCompactScreenPreview() {
     uiMode = Configuration.UI_MODE_TYPE_NORMAL,
     device = "spec:width=1920dp,height=1080dp,dpi=160",
 )
-fun OtterLandMeduimScreenPreview() {
+fun OtterLandMediumHomeScreenPreview() {
     OtterLandTheme {
-        OtterLandAppScreen()
+        OtterLandHomeScreen()
     }
 }
 
 @Composable
-fun OtterLandAppScreen(
-    adaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(true)
+fun OtterLandHomeScreen(
+    navController: NavController = rememberNavController(),
+    adaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(true),
 ) {
     var currentNavigationItem by rememberSaveable { mutableStateOf(NavigationItems.SYSTEM_INFO) }
 
@@ -162,16 +165,14 @@ fun OtterLandAppScreen(
         navigationItemVerticalArrangement = NavigationSuiteDefaults.verticalArrangement,
         primaryActionContent = {},
     ) {
-        Box(
-            modifier = Modifier.fillMaxSize()
-        ){
-            when (currentNavigationItem) {
-                NavigationItems.SYSTEM_INFO -> {
-                    SystemInfoScreen()
-                }
-                NavigationItems.FIREBASE -> {}
-                else -> {}
+        when(currentNavigationItem){
+            NavigationItems.SYSTEM_INFO -> {
+                SystemInfoScreen(
+                    navController = navController
+                )
             }
+            NavigationItems.FIREBASE -> {}
+            NavigationItems.MEDIA -> {}
         }
     }
 }

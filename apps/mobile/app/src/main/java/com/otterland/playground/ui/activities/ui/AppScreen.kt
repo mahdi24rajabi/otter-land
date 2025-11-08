@@ -2,28 +2,28 @@ package com.otterland.OtterLand.ui.activities.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
 import com.otterland.foundation.design.theme.OtterLandTheme
-import com.otterland.playground.ui.activities.ui.OtterLandAppScreen
+import com.otterland.playground.ui.activities.ui.navigation.AppScreen
+import com.otterland.playground.ui.activities.ui.navigation.appScreenDestinations
 
 @Preview
 @Composable
 fun OtterLandAppPreview() {
-    OtterLandApp()
-}
-
-private enum class DeviceType {
-    COMPACT,
-    MEDIUM,
-    EXPANDED,
-    LARGE,
-    EXTRA_LARGE,
+    OtterLandTheme {
+        OtterLandApp()
+    }
 }
 
 @Composable
 fun OtterLandApp() {
-//    createNavHost(navController)
+    val navController = rememberNavController()
 
-    OtterLandTheme {
-        OtterLandAppScreen()
+    NavHost(
+        navController = navController,
+        startDestination = AppScreen,
+    ) {
+        appScreenDestinations(navController = navController)
     }
 }

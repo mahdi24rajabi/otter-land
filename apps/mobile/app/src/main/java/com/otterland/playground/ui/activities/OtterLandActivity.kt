@@ -29,7 +29,9 @@ class OtterLandActivity : ComponentActivity() {
         installSplashScreen()
 
         setContent {
-            OtterLandApp()
+            OtterLandTheme {
+                OtterLandApp()
+            }
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
