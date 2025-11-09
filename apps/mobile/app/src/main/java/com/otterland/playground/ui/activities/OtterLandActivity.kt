@@ -25,6 +25,7 @@ class OtterLandActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+        actionBar?.hide()
 
         installSplashScreen()
 

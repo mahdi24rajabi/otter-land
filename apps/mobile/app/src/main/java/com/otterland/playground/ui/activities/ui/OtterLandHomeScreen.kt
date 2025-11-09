@@ -1,13 +1,13 @@
 package com.otterland.playground.ui.activities.ui
 
 import android.content.res.Configuration
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationItemColors
-import androidx.compose.material3.NavigationItemIconPosition
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.NavigationRailItemColors
-import androidx.compose.material3.ShortNavigationBarItem
+import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteDefaults
@@ -18,29 +18,31 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.otterland.foundation.design.theme.OtterLandTheme
 import com.otterland.playground.R
-import com.otterland.playground.ui.activities.ui.navigation.HomeScreen
 import com.outterland.feature.systeminfo.ui.SystemInfoScreen
 
 
 enum class NavigationItems(
     val iconResource: Int,
+    val lable: String,
 ) {
     SYSTEM_INFO(
-        iconResource = R.drawable.navigationbar_info
+        iconResource = R.drawable.navigationbar_info,
+        lable = "Information",
     ),
     FIREBASE(
-        iconResource = R.drawable.navigationbar_firebase
+        iconResource = R.drawable.navigationbar_firebase,
+        lable = "Firebase",
     ),
     MEDIA(
-        iconResource = R.drawable.navigationbar_media
+        iconResource = R.drawable.navigationbar_media,
+        lable = "Media",
     ),
 }
 
@@ -78,10 +80,8 @@ fun OtterLandHomeScreen(
         shortNavigationBarContentColor = MaterialTheme.colorScheme.surfaceContainer,
         navigationBarContainerColor = MaterialTheme.colorScheme.surfaceContainer,
         navigationBarContentColor = MaterialTheme.colorScheme.surfaceContainer,
-        navigationRailContainerColor = MaterialTheme.colorScheme.surfaceContainer,
-        navigationRailContentColor = MaterialTheme.colorScheme.surfaceContainer,
-        navigationDrawerContainerColor = MaterialTheme.colorScheme.surfaceContainer,
-        navigationDrawerContentColor = MaterialTheme.colorScheme.surfaceContainer,
+        navigationRailContainerColor = MaterialTheme.colorScheme.onSurface,
+        navigationRailContentColor = MaterialTheme.colorScheme.onSurface,
     )
 
     val navigationBarColors = NavigationItemColors(
@@ -123,53 +123,35 @@ fun OtterLandHomeScreen(
     NavigationSuiteScaffold(
         navigationItems = {
             NavigationItems.entries.forEach { value ->
-                if (navigationSuiteType == NavigationSuiteType.WideNavigationRailCollapsed) {
-                    NavigationRailItem(
-                        icon = {
-                            Icon(
-                                painter = painterResource(value.iconResource),
-                                contentDescription = ""
-                            )
-                        },
-                        selected = currentNavigationItem == value,
-                        enabled = true,
-                        onClick = {
-                            currentNavigationItem = value
-                        },
-                        alwaysShowLabel = false,
-                        colors = navigationItemColors,
-                    )
-                } else {
-                    ShortNavigationBarItem(
-                        icon = {
-                            Icon(
-                                painter = painterResource(value.iconResource),
-                                contentDescription = ""
-                            )
-                        },
-                        selected = currentNavigationItem == value,
-                        enabled = true,
-                        onClick = {
-                            currentNavigationItem = value
-                        },
-                        label = { "" },
-                        iconPosition = NavigationItemIconPosition.Start,
-                        interactionSource = null,
-                        colors = navigationBarColors
-                    )
-                }
+                NavigationRailItem(
+                    icon = {
+                        Icon(
+                            painter = painterResource(value.iconResource),
+                            contentDescription = ""
+                        )
+                    },
+                    selected = currentNavigationItem == value,
+                    enabled = true,
+                    onClick = {
+                        currentNavigationItem = value
+                    },
+                    alwaysShowLabel = true,
+                    colors = navigationItemColors,
+                    label = {
+                        Text(value.lable)
+                    },
+                )
             }
         },
         navigationSuiteType = navigationSuiteType,
         navigationSuiteColors = navigationSuiteColor,
         navigationItemVerticalArrangement = NavigationSuiteDefaults.verticalArrangement,
         primaryActionContent = {},
+        modifier = Modifier.safeContentPadding(),
     ) {
-        when(currentNavigationItem){
+        when (currentNavigationItem) {
             NavigationItems.SYSTEM_INFO -> {
-                SystemInfoScreen(
-                    navController = navController
-                )
+                SystemInfoScreen()
             }
             NavigationItems.FIREBASE -> {}
             NavigationItems.MEDIA -> {}

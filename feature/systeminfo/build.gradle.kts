@@ -12,5 +12,6 @@ android {
 
 dependencies {
     implementation(project(":data:systeminfo"))
+    implementation(project(":libs:foundation:design"))
 }
 
