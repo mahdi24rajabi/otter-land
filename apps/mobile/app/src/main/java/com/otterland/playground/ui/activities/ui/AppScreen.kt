@@ -1,4 +1,4 @@
-package com.otterland.OtterLand.ui.activities.ui
+package com.otterland.playground.ui.activities.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
