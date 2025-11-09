@@ -9,8 +9,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 object AppScreen
 
-fun NavGraphBuilder.appScreenDestinations(navController: NavController) {
+fun NavGraphBuilder.appScreenDestinations() {
     composable<AppScreen> {
-        OtterLandHomeScreen(navController = navController)
+        OtterLandHomeScreen()
     }
 }

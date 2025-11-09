@@ -24,6 +24,6 @@ fun OtterLandApp() {
         navController = navController,
         startDestination = AppScreen,
     ) {
-        appScreenDestinations(navController = navController)
+        appScreenDestinations()
     }
 }

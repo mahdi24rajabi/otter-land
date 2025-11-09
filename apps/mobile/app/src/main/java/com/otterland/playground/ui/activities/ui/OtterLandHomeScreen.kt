@@ -3,13 +3,18 @@ package com.otterland.playground.ui.activities.ui
 import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.safeGesturesPadding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationItemColors
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.NavigationRailItemColors
 import androidx.compose.material3.Text
@@ -27,8 +32,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
+import androidx.compose.ui.unit.dp
 import com.otterland.foundation.design.theme.OtterLandTheme
 import com.otterland.playground.R
 import com.outterland.feature.systeminfo.ui.SystemInfoScreen
@@ -36,19 +40,19 @@ import com.outterland.feature.systeminfo.ui.SystemInfoScreen
 
 enum class NavigationItems(
     val iconResource: Int,
-    val lable: String,
+    val label: String,
 ) {
     SYSTEM_INFO(
         iconResource = R.drawable.navigationbar_info,
-        lable = "Information",
+        label = "Information",
     ),
     FIREBASE(
         iconResource = R.drawable.navigationbar_firebase,
-        lable = "Firebase",
+        label = "Firebase",
     ),
     MEDIA(
         iconResource = R.drawable.navigationbar_media,
-        lable = "Media",
+        label = "Media",
     ),
 }
 
@@ -76,7 +80,6 @@ fun OtterLandMediumHomeScreenPreview() {
 
 @Composable
 fun OtterLandHomeScreen(
-    navController: NavController = rememberNavController(),
     adaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(true),
 ) {
     var currentNavigationItem by rememberSaveable { mutableStateOf(NavigationItems.SYSTEM_INFO) }
@@ -94,16 +97,6 @@ fun OtterLandHomeScreen(
         ),
         navigationDrawerContentColor = MaterialTheme.colorScheme.surfaceContainer,
         navigationDrawerContainerColor = MaterialTheme.colorScheme.surfaceContainer,
-    )
-
-    val navigationBarColors = NavigationItemColors(
-        selectedIndicatorColor = MaterialTheme.colorScheme.secondaryContainer,
-        selectedTextColor = MaterialTheme.colorScheme.secondary,
-        selectedIconColor = MaterialTheme.colorScheme.onSecondaryContainer,
-        unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
-        unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
-        disabledIconColor = MaterialTheme.colorScheme.onSurface,
-        disabledTextColor = MaterialTheme.colorScheme.background,
     )
 
     val navigationItemColors = NavigationRailItemColors(
@@ -149,7 +142,7 @@ fun OtterLandHomeScreen(
                     alwaysShowLabel = true,
                     colors = navigationItemColors,
                     label = {
-                        Text(value.lable)
+                        Text(value.label)
                     },
                 )
             }
@@ -158,12 +151,18 @@ fun OtterLandHomeScreen(
         navigationSuiteColors = navigationSuiteColor,
         navigationItemVerticalArrangement = NavigationSuiteDefaults.verticalArrangement,
         primaryActionContent = {},
-        modifier = Modifier.safeDrawingPadding(),
+        modifier = Modifier.fillMaxSize(),
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
                 .background(color = MaterialTheme.colorScheme.secondaryContainer)
-                .verticalScroll(rememberScrollState()),
+                .verticalScroll(rememberScrollState())
+                .padding(
+                    top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding(),
+                    bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding(),
+                    start = 16.dp,
+                    end = 16.dp
+                )
         ){
             when (currentNavigationItem) {
                 NavigationItems.SYSTEM_INFO -> {
