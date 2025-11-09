@@ -7,5 +7,6 @@ private val Project.libs: VersionCatalog
 
 dependencies {
     add( "implementation", libs.findLibrary("dependency-injection-dagger-hilt").get())
+    add( "implementation", libs.findLibrary("dependency-injection-dagger-hilt-compose").get())
     add("ksp", libs.findLibrary("dependency-injection-dagger-hilt-compiler").get())
 }

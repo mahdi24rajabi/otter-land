@@ -42,8 +42,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.otterland.foundation.design.theme.OtterLandTheme
 import com.outterland.feature.systeminfo.R
+import com.outterland.feature.systeminfo.SystemInfoViewModel
 
 @Composable
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL)
@@ -56,6 +58,8 @@ fun SystemInfoScreenPreview() {
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
 fun SystemInfoScreen() {
+    val systemInfoViewModel = hiltViewModel<SystemInfoViewModel>()
+
     val cardColors =
         CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
     val cardElevation = CardDefaults.elevatedCardElevation(defaultElevation = 1.dp)
