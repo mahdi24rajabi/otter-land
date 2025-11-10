@@ -8,7 +8,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.outterland.feature.systeminfo.SystemInfoViewModel
 import com.outterland.feature.systeminfo.ui.SystemInfoScreen
-import com.outterland.feature.systeminfo.ui.navigation.createSystemInfoNavigationGraph
 import kotlinx.serialization.Serializable
 
 sealed class Destinations {
