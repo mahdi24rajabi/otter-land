@@ -33,8 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.otterland.foundation.design.theme.OtterLandTheme
 import com.otterland.playground.R
-import com.outterland.feature.systeminfo.ui.SystemInfoScreen
-
+import com.outterland.feature.systeminfo.ui.navigation.SystemInfoNavHost
 
 enum class NavigationItems(
     val iconResource: Int,
@@ -165,9 +164,10 @@ fun OtterLandHomeScreen(
         ){
             when (currentNavigationItem) {
                 NavigationItems.SYSTEM_INFO -> {
-                    SystemInfoScreen()
+                    SystemInfoNavHost()
                 }
-                NavigationItems.FIREBASE -> {}
+                NavigationItems.FIREBASE -> {
+                }
                 NavigationItems.MEDIA -> {}
             }
         }

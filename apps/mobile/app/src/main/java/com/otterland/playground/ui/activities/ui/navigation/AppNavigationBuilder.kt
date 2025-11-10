@@ -5,11 +5,14 @@ import androidx.navigation.compose.composable
 import com.otterland.playground.ui.activities.ui.OtterLandHomeScreen
 import kotlinx.serialization.Serializable
 
-@Serializable
-object AppScreen
 
-fun NavGraphBuilder.appScreenDestinations() {
-    composable<AppScreen> {
+sealed class Destination {
+    @Serializable
+    object AppScreen: Destination()
+}
+
+fun NavGraphBuilder.appScreenNavigationGraph() {
+    composable<Destination.AppScreen> {
         OtterLandHomeScreen()
     }
 }

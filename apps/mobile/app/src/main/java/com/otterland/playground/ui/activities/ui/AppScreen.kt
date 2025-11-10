@@ -5,8 +5,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.otterland.foundation.design.theme.OtterLandTheme
-import com.otterland.playground.ui.activities.ui.navigation.AppScreen
-import com.otterland.playground.ui.activities.ui.navigation.appScreenDestinations
+import com.otterland.playground.ui.activities.ui.navigation.Destination
+import com.otterland.playground.ui.activities.ui.navigation.appScreenNavigationGraph
 
 @Preview
 @Composable
@@ -22,8 +22,8 @@ fun OtterLandApp() {
 
     NavHost(
         navController = navController,
-        startDestination = AppScreen,
+        startDestination = Destination.AppScreen,
     ) {
-        appScreenDestinations()
+        appScreenNavigationGraph()
     }
 }
