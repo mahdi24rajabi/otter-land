@@ -1,7 +1,7 @@
 package com.outterland.feature.systeminfo
 
 
-class SystemInfoUiState(
+internal class SystemInfoUiState(
 
 ) {
 

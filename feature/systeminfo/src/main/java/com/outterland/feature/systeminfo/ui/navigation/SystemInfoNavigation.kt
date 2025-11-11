@@ -10,13 +10,13 @@ import com.outterland.feature.systeminfo.SystemInfoViewModel
 import com.outterland.feature.systeminfo.ui.SystemInfoScreen
 import kotlinx.serialization.Serializable
 
-sealed class Destinations {
+internal sealed class Route {
     @Serializable
-    object SystemInfo: Destinations()
+    object SystemInfo: Route()
 }
 
 internal fun NavGraphBuilder.createSystemInfoNavigationGraph(){
-    composable<Destinations.SystemInfo> {
+    composable<Route.SystemInfo> {
         val systemInfoViewModel: SystemInfoViewModel = hiltViewModel()
         SystemInfoScreen()
     }
@@ -27,7 +27,7 @@ fun SystemInfoNavHost(){
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Destinations.SystemInfo
+        startDestination = Route.SystemInfo
     ){
         createSystemInfoNavigationGraph()
     }
