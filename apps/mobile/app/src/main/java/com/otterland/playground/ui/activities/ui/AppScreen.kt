@@ -10,14 +10,14 @@ import com.otterland.playground.ui.activities.ui.navigation.appScreenNavigationG
 
 @Preview
 @Composable
-fun OtterLandAppPreview() {
+fun AppScreenPreview() {
     OtterLandTheme {
-        OtterLandApp()
+        AppScreen()
     }
 }
 
 @Composable
-fun OtterLandApp() {
+fun AppScreen() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
