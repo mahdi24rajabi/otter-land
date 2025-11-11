@@ -1,6 +1,5 @@
 package com.otterland.playground.ui.activities.ui
 
-import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -29,9 +28,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.otterland.foundation.design.theme.OtterLandTheme
 import com.otterland.playground.R
 import com.outterland.feature.systeminfo.ui.navigation.SystemInfoNavHost
 
@@ -54,29 +51,7 @@ enum class NavigationItems(
 }
 
 @Composable
-@Preview(
-    uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_DESK,
-    device = "id:Nexus S",
-)
-fun OtterLandHomeScreenPreview() {
-    OtterLandTheme {
-        OtterLandHomeScreen()
-    }
-}
-
-@Composable
-@Preview(
-    uiMode = Configuration.UI_MODE_TYPE_NORMAL,
-    device = "spec:width=1920dp,height=1080dp,dpi=160",
-)
-fun OtterLandMediumHomeScreenPreview() {
-    OtterLandTheme {
-        OtterLandHomeScreen()
-    }
-}
-
-@Composable
-fun OtterLandHomeScreen(
+fun HomeScreen(
     adaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(true),
 ) {
     var currentNavigationItem by rememberSaveable { mutableStateOf(NavigationItems.SYSTEM_INFO) }

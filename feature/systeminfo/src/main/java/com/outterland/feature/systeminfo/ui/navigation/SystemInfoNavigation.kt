@@ -10,7 +10,8 @@ import com.outterland.feature.systeminfo.SystemInfoViewModel
 import com.outterland.feature.systeminfo.ui.SystemInfoScreen
 import kotlinx.serialization.Serializable
 
-internal sealed class Route {
+@Serializable
+internal sealed class Route() {
     @Serializable
     object SystemInfo: Route()
 }
