@@ -6,3 +6,6 @@ plugins {
 android {
     namespace = "com.otterland.foundation.design"
 }
+dependencies {
+    implementation(libs.androidx.runtime)
+}

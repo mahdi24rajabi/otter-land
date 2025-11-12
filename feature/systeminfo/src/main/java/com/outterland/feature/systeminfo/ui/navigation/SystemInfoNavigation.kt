@@ -7,19 +7,21 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.outterland.feature.systeminfo.SystemInfoViewModel
-import com.outterland.feature.systeminfo.ui.SystemInfoScreen
+import com.outterland.feature.systeminfo.ui.screen.SystemInfoScreen
 import kotlinx.serialization.Serializable
 
 @Serializable
 internal sealed class Route() {
     @Serializable
-    object SystemInfo: Route()
+    object SystemInfoList: Route()
 }
 
 internal fun NavGraphBuilder.createSystemInfoNavigationGraph(){
-    composable<Route.SystemInfo> {
+    composable<Route.SystemInfoList> {
         val systemInfoViewModel: SystemInfoViewModel = hiltViewModel()
-        SystemInfoScreen()
+        SystemInfoScreen(
+            systemInfoViewModel = systemInfoViewModel
+        )
     }
 }
 
@@ -28,7 +30,7 @@ fun SystemInfoNavHost(){
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Route.SystemInfo
+        startDestination = Route.SystemInfoList
     ){
         createSystemInfoNavigationGraph()
     }

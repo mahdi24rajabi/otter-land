@@ -1,18 +1,26 @@
 package com.otterland.data.system
 
+import android.app.ActivityManager
 import android.app.Application
-import com.otterland.data.system.model.CPUModel
+import android.content.Context
+import android.hardware.display.DisplayManager
+import com.otterland.data.system.model.CPUInfoModel
 import kotlinx.coroutines.coroutineScope
 
 class SystemRepository(
-    val application: Application,
+    application: Application
 ) {
+    val displayManager = application.getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
 
     suspend fun getCPUInfo() = coroutineScope {
-        CPUModel(
-            architecture = "",
-            cacheL1Size = 0L,
-            numberOfCores = 4,
+        CPUInfoModel(
+            numberOfCores = Runtime.getRuntime().availableProcessors(),
         )
+    }
+
+    suspend fun getDisplayInfo() = coroutineScope {
+        displayManager.displays?.forEach {
+//            it.cutout
+        }
     }
 }
