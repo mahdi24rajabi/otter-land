@@ -5,4 +5,21 @@ plugins {
 
 android {
     namespace = "com.otterland.data.system"
+
+    ndkVersion = "29.0.14206865"
+
+    externalNativeBuild {
+
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+            version = "3.22.1"
+        }
+    }
+    defaultConfig {
+        externalNativeBuild {
+            cmake {
+                cppFlags += ""
+            }
+        }
+    }
 }

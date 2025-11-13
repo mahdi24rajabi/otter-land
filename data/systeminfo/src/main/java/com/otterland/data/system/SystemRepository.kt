@@ -10,6 +10,10 @@ import kotlinx.coroutines.coroutineScope
 class SystemRepository(
     application: Application
 ) {
+
+    init {
+        System.loadLibrary("systeminfo")
+    }
     val displayManager = application.getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
 
     suspend fun getCPUInfo() = coroutineScope {
