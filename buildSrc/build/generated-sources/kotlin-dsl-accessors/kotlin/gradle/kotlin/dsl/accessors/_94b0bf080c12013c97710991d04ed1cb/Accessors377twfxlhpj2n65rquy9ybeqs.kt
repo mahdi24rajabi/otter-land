@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [android][com.android.build.gradle.internal.dsl.BaseAppModuleExtension] extension.
  */
 internal
-val Project.`android`: com.android.build.gradle.internal.dsl.BaseAppModuleExtension get() =
+val org.gradle.api.Project.`android`: com.android.build.gradle.internal.dsl.BaseAppModuleExtension get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("android") as com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 
 /**
  * Configures the [android][com.android.build.gradle.internal.dsl.BaseAppModuleExtension] extension.
  */
 internal
-fun Project.`android`(configure: Action<com.android.build.gradle.internal.dsl.BaseAppModuleExtension>): Unit =
+fun org.gradle.api.Project.`android`(configure: Action<com.android.build.gradle.internal.dsl.BaseAppModuleExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("android", configure)
 
 

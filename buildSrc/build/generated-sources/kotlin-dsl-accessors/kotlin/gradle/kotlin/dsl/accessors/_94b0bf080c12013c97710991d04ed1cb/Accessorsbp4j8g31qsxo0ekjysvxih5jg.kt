@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [javaToolchains][org.gradle.jvm.toolchain.JavaToolchainService] extension.
  */
 internal
-val Project.`javaToolchains`: org.gradle.jvm.toolchain.JavaToolchainService get() =
+val org.gradle.api.Project.`javaToolchains`: org.gradle.jvm.toolchain.JavaToolchainService get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("javaToolchains") as org.gradle.jvm.toolchain.JavaToolchainService
 
 /**
  * Configures the [javaToolchains][org.gradle.jvm.toolchain.JavaToolchainService] extension.
  */
 internal
-fun Project.`javaToolchains`(configure: Action<org.gradle.jvm.toolchain.JavaToolchainService>): Unit =
+fun org.gradle.api.Project.`javaToolchains`(configure: Action<org.gradle.jvm.toolchain.JavaToolchainService>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("javaToolchains", configure)
 
 

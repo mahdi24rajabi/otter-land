@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [lintLifecycle][com.android.build.api.variant.LintLifecycleExtension] extension.
  */
 internal
-val Project.`lintLifecycle`: com.android.build.api.variant.LintLifecycleExtension get() =
+val org.gradle.api.Project.`lintLifecycle`: com.android.build.api.variant.LintLifecycleExtension get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("lintLifecycle") as com.android.build.api.variant.LintLifecycleExtension
 
 /**
  * Configures the [lintLifecycle][com.android.build.api.variant.LintLifecycleExtension] extension.
  */
 internal
-fun Project.`lintLifecycle`(configure: Action<com.android.build.api.variant.LintLifecycleExtension>): Unit =
+fun org.gradle.api.Project.`lintLifecycle`(configure: Action<com.android.build.api.variant.LintLifecycleExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("lintLifecycle", configure)
 
 

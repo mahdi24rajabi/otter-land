@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [kotlinTestRegistry][org.jetbrains.kotlin.gradle.testing.internal.KotlinTestsRegistry] extension.
  */
 internal
-val Project.`kotlinTestRegistry`: org.jetbrains.kotlin.gradle.testing.internal.KotlinTestsRegistry get() =
+val org.gradle.api.Project.`kotlinTestRegistry`: org.jetbrains.kotlin.gradle.testing.internal.KotlinTestsRegistry get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("kotlinTestRegistry") as org.jetbrains.kotlin.gradle.testing.internal.KotlinTestsRegistry
 
 /**
  * Configures the [kotlinTestRegistry][org.jetbrains.kotlin.gradle.testing.internal.KotlinTestsRegistry] extension.
  */
 internal
-fun Project.`kotlinTestRegistry`(configure: Action<org.jetbrains.kotlin.gradle.testing.internal.KotlinTestsRegistry>): Unit =
+fun org.gradle.api.Project.`kotlinTestRegistry`(configure: Action<org.jetbrains.kotlin.gradle.testing.internal.KotlinTestsRegistry>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("kotlinTestRegistry", configure)
 
 

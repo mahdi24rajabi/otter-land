@@ -26,11 +26,9 @@ fun PermissionChecker(
             title = "Permission request",
             reason = "${reason}",
             onDenied = {
-                showRationaleDialog = false
                 onDenied()
             },
             onApprove = {
-                showRationaleDialog = false
             }
         )
     }

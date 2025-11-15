@@ -6,18 +6,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.otterland.foundation.design.component.ListCard
 import com.otterland.foundation.design.component.PermissionChecker
 import com.otterland.foundation.design.component.SingleLineListItem
-import com.otterland.foundation.design.theme.OtterLandTheme
 import com.outterland.feature.systeminfo.R
 import com.outterland.feature.systeminfo.ui.navigation.Route
 
@@ -25,16 +23,19 @@ internal enum class SystemInfoItem(
     val iconResource: Int,
     val label: String,
     val route: Route,
+    val needsPermission: Boolean,
 ) {
     DISPLAY_INFO(
         iconResource = R.drawable.ic_brightness,
         label = "Display",
+        needsPermission = true,
         route = Route.DisplayInfo,
     ),
     Storage(
         iconResource = R.drawable.ic_memory,
         label = "Storage",
         route = Route.DisplayInfo,
+        needsPermission = true,
     ),
 }
 
@@ -51,7 +52,7 @@ internal fun SystemInfoLayout(onItemSelected: (SystemInfoItem) -> Unit) {
         mutableStateOf(false)
     }
 
-    if(permissionRequested) {
+    if (permissionRequested) {
         PermissionChecker(
             permission = Manifest.permission.WRITE_SETTINGS,
             onGranted = {
@@ -81,7 +82,7 @@ internal fun SystemInfoLayout(onItemSelected: (SystemInfoItem) -> Unit) {
                     item.label,
                     true,
                 ) {
-                    if(item == SystemInfoItem.DISPLAY_INFO){
+                    if (item.needsPermission) {
                         permissionRequested = true
                     } else {
                         onItemSelected(item)

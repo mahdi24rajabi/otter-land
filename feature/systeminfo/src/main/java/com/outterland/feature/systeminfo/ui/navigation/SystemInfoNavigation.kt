@@ -26,7 +26,6 @@ internal sealed class Route() {
 
 internal fun NavGraphBuilder.createSystemInfoNavigationGraph(navigate: (Route) -> Unit ){
     composable<Route.SystemInfoList> { backStackEntry ->
-        hiltViewModel()
         SystemInfoScreen { route ->
             navigate(route)
         }

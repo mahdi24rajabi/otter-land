@@ -3,6 +3,7 @@
  *
  * @see Android_ui_compose_gradle
  */
+public
 class AndroidUiComposePlugin : org.gradle.api.Plugin<org.gradle.api.Project> {
     override fun apply(target: org.gradle.api.Project) {
         try {

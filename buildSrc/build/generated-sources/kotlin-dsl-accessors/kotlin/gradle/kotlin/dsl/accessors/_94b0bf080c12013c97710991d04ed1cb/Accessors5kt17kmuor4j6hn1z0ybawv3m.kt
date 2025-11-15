@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [swiftExportClasspathResolvable][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<Configuration>.`swiftExportClasspathResolvable`: NamedDomainObjectProvider<Configuration>
-    get() = named<Configuration>("swiftExportClasspathResolvable")
+val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`swiftExportClasspathResolvable`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
+    get() = named<org.gradle.api.artifacts.Configuration>("swiftExportClasspathResolvable")
 
 

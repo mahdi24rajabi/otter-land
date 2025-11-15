@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [ext][org.gradle.api.plugins.ExtraPropertiesExtension] extension.
  */
 internal
-val Project.`ext`: org.gradle.api.plugins.ExtraPropertiesExtension get() =
+val org.gradle.api.Project.`ext`: org.gradle.api.plugins.ExtraPropertiesExtension get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("ext") as org.gradle.api.plugins.ExtraPropertiesExtension
 
 /**
  * Configures the [ext][org.gradle.api.plugins.ExtraPropertiesExtension] extension.
  */
 internal
-fun Project.`ext`(configure: Action<org.gradle.api.plugins.ExtraPropertiesExtension>): Unit =
+fun org.gradle.api.Project.`ext`(configure: Action<org.gradle.api.plugins.ExtraPropertiesExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("ext", configure)
 
 

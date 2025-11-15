@@ -3,6 +3,7 @@
  *
  * @see Kotlin_dependencies_gradle
  */
+public
 class KotlinDependenciesPlugin : org.gradle.api.Plugin<org.gradle.api.Project> {
     override fun apply(target: org.gradle.api.Project) {
         try {

@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [kotlinCompilerPluginClasspath][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<Configuration>.`kotlinCompilerPluginClasspath`: NamedDomainObjectProvider<Configuration>
-    get() = named<Configuration>("kotlinCompilerPluginClasspath")
+val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`kotlinCompilerPluginClasspath`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
+    get() = named<org.gradle.api.artifacts.Configuration>("kotlinCompilerPluginClasspath")
 
 

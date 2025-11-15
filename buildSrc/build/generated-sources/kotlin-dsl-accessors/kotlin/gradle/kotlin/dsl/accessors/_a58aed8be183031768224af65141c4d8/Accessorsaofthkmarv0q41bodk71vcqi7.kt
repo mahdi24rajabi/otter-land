@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [defaultArtifacts][org.gradle.api.internal.plugins.DefaultArtifactPublicationSet] extension.
  */
 internal
-val Project.`defaultArtifacts`: org.gradle.api.internal.plugins.DefaultArtifactPublicationSet get() =
+val org.gradle.api.Project.`defaultArtifacts`: org.gradle.api.internal.plugins.DefaultArtifactPublicationSet get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("defaultArtifacts") as org.gradle.api.internal.plugins.DefaultArtifactPublicationSet
 
 /**
  * Configures the [defaultArtifacts][org.gradle.api.internal.plugins.DefaultArtifactPublicationSet] extension.
  */
 internal
-fun Project.`defaultArtifacts`(configure: Action<org.gradle.api.internal.plugins.DefaultArtifactPublicationSet>): Unit =
+fun org.gradle.api.Project.`defaultArtifacts`(configure: Action<org.gradle.api.internal.plugins.DefaultArtifactPublicationSet>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("defaultArtifacts", configure)
 
 

@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [android][com.android.build.gradle.LibraryExtension] extension.
  */
 internal
-val Project.`android`: com.android.build.gradle.LibraryExtension get() =
+val org.gradle.api.Project.`android`: com.android.build.gradle.LibraryExtension get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("android") as com.android.build.gradle.LibraryExtension
 
 /**
  * Configures the [android][com.android.build.gradle.LibraryExtension] extension.
  */
 internal
-fun Project.`android`(configure: Action<com.android.build.gradle.LibraryExtension>): Unit =
+fun org.gradle.api.Project.`android`(configure: Action<com.android.build.gradle.LibraryExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("android", configure)
 
 

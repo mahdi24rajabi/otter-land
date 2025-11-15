@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [ksp][com.google.devtools.ksp.gradle.KspExtension] extension.
  */
 internal
-val Project.`ksp`: com.google.devtools.ksp.gradle.KspExtension get() =
+val org.gradle.api.Project.`ksp`: com.google.devtools.ksp.gradle.KspExtension get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("ksp") as com.google.devtools.ksp.gradle.KspExtension
 
 /**
  * Configures the [ksp][com.google.devtools.ksp.gradle.KspExtension] extension.
  */
 internal
-fun Project.`ksp`(configure: Action<com.google.devtools.ksp.gradle.KspExtension>): Unit =
+fun org.gradle.api.Project.`ksp`(configure: Action<com.google.devtools.ksp.gradle.KspExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("ksp", configure)
 
 

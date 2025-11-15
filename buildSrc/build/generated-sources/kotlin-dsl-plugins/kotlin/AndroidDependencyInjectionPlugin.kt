@@ -3,6 +3,7 @@
  *
  * @see Android_dependency_injection_gradle
  */
+public
 class AndroidDependencyInjectionPlugin : org.gradle.api.Plugin<org.gradle.api.Project> {
     override fun apply(target: org.gradle.api.Project) {
         try {

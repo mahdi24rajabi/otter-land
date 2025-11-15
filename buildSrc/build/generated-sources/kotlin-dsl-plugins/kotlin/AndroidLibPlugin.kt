@@ -3,6 +3,7 @@
  *
  * @see Android_lib_gradle
  */
+public
 class AndroidLibPlugin : org.gradle.api.Plugin<org.gradle.api.Project> {
     override fun apply(target: org.gradle.api.Project) {
         try {

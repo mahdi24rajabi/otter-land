@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [buildOutputs][org.gradle.api.NamedDomainObjectContainer<com.android.build.gradle.api.BaseVariantOutput>] extension.
  */
 internal
-val Project.`buildOutputs`: org.gradle.api.NamedDomainObjectContainer<com.android.build.gradle.api.BaseVariantOutput> get() =
+val org.gradle.api.Project.`buildOutputs`: org.gradle.api.NamedDomainObjectContainer<com.android.build.gradle.api.BaseVariantOutput> get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("buildOutputs") as org.gradle.api.NamedDomainObjectContainer<com.android.build.gradle.api.BaseVariantOutput>
 
 /**
  * Configures the [buildOutputs][org.gradle.api.NamedDomainObjectContainer<com.android.build.gradle.api.BaseVariantOutput>] extension.
  */
 internal
-fun Project.`buildOutputs`(configure: Action<org.gradle.api.NamedDomainObjectContainer<com.android.build.gradle.api.BaseVariantOutput>>): Unit =
+fun org.gradle.api.Project.`buildOutputs`(configure: Action<org.gradle.api.NamedDomainObjectContainer<com.android.build.gradle.api.BaseVariantOutput>>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("buildOutputs", configure)
 
 

@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [coreLibraryDesugaring][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<Configuration>.`coreLibraryDesugaring`: NamedDomainObjectProvider<Configuration>
-    get() = named<Configuration>("coreLibraryDesugaring")
+val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`coreLibraryDesugaring`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
+    get() = named<org.gradle.api.artifacts.Configuration>("coreLibraryDesugaring")
 
 

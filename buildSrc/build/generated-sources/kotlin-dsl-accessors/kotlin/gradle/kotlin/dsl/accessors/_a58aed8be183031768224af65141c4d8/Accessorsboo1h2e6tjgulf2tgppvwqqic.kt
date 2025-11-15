@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [androidComponents][com.android.build.api.variant.LibraryAndroidComponentsExtension] extension.
  */
 internal
-val Project.`androidComponents`: com.android.build.api.variant.LibraryAndroidComponentsExtension get() =
+val org.gradle.api.Project.`androidComponents`: com.android.build.api.variant.LibraryAndroidComponentsExtension get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("androidComponents") as com.android.build.api.variant.LibraryAndroidComponentsExtension
 
 /**
  * Configures the [androidComponents][com.android.build.api.variant.LibraryAndroidComponentsExtension] extension.
  */
 internal
-fun Project.`androidComponents`(configure: Action<com.android.build.api.variant.LibraryAndroidComponentsExtension>): Unit =
+fun org.gradle.api.Project.`androidComponents`(configure: Action<com.android.build.api.variant.LibraryAndroidComponentsExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("androidComponents", configure)
 
 

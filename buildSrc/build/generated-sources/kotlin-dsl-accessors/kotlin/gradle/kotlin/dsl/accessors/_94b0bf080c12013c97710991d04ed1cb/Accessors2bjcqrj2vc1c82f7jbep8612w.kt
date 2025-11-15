@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [optionalNpm][org.jetbrains.kotlin.gradle.targets.js.npm.NpmDependencyExtension] extension.
  */
 internal
-val DependencyHandler.`optionalNpm`: org.jetbrains.kotlin.gradle.targets.js.npm.NpmDependencyExtension get() =
+val org.gradle.api.artifacts.dsl.DependencyHandler.`optionalNpm`: org.jetbrains.kotlin.gradle.targets.js.npm.NpmDependencyExtension get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("optionalNpm") as org.jetbrains.kotlin.gradle.targets.js.npm.NpmDependencyExtension
 
 /**
  * Configures the [optionalNpm][org.jetbrains.kotlin.gradle.targets.js.npm.NpmDependencyExtension] extension.
  */
 internal
-fun DependencyHandler.`optionalNpm`(configure: Action<org.jetbrains.kotlin.gradle.targets.js.npm.NpmDependencyExtension>): Unit =
+fun org.gradle.api.artifacts.dsl.DependencyHandler.`optionalNpm`(configure: Action<org.jetbrains.kotlin.gradle.targets.js.npm.NpmDependencyExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("optionalNpm", configure)
 
 

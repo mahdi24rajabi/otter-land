@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [versionCatalogs][org.gradle.api.artifacts.VersionCatalogsExtension] extension.
  */
 internal
-val Project.`versionCatalogs`: org.gradle.api.artifacts.VersionCatalogsExtension get() =
+val org.gradle.api.Project.`versionCatalogs`: org.gradle.api.artifacts.VersionCatalogsExtension get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("versionCatalogs") as org.gradle.api.artifacts.VersionCatalogsExtension
 
 /**
  * Configures the [versionCatalogs][org.gradle.api.artifacts.VersionCatalogsExtension] extension.
  */
 internal
-fun Project.`versionCatalogs`(configure: Action<org.gradle.api.artifacts.VersionCatalogsExtension>): Unit =
+fun org.gradle.api.Project.`versionCatalogs`(configure: Action<org.gradle.api.artifacts.VersionCatalogsExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("versionCatalogs", configure)
 
 

@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [devNpm][org.jetbrains.kotlin.gradle.targets.js.npm.DevNpmDependencyExtension] extension.
  */
 internal
-val DependencyHandler.`devNpm`: org.jetbrains.kotlin.gradle.targets.js.npm.DevNpmDependencyExtension get() =
+val org.gradle.api.artifacts.dsl.DependencyHandler.`devNpm`: org.jetbrains.kotlin.gradle.targets.js.npm.DevNpmDependencyExtension get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("devNpm") as org.jetbrains.kotlin.gradle.targets.js.npm.DevNpmDependencyExtension
 
 /**
  * Configures the [devNpm][org.jetbrains.kotlin.gradle.targets.js.npm.DevNpmDependencyExtension] extension.
  */
 internal
-fun DependencyHandler.`devNpm`(configure: Action<org.jetbrains.kotlin.gradle.targets.js.npm.DevNpmDependencyExtension>): Unit =
+fun org.gradle.api.artifacts.dsl.DependencyHandler.`devNpm`(configure: Action<org.jetbrains.kotlin.gradle.targets.js.npm.DevNpmDependencyExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("devNpm", configure)
 
 
