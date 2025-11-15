@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [sourceSets][org.gradle.api.tasks.SourceSetContainer] extension.
  */
 internal
-val org.gradle.api.Project.`sourceSets`: org.gradle.api.tasks.SourceSetContainer get() =
+val Project.`sourceSets`: org.gradle.api.tasks.SourceSetContainer get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("sourceSets") as org.gradle.api.tasks.SourceSetContainer
 
 /**
  * Configures the [sourceSets][org.gradle.api.tasks.SourceSetContainer] extension.
  */
 internal
-fun org.gradle.api.Project.`sourceSets`(configure: Action<org.gradle.api.tasks.SourceSetContainer>): Unit =
+fun Project.`sourceSets`(configure: Action<org.gradle.api.tasks.SourceSetContainer>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("sourceSets", configure)
 
 

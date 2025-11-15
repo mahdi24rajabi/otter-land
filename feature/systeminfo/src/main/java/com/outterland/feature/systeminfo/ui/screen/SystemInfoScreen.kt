@@ -1,86 +1,93 @@
 package com.outterland.feature.systeminfo.ui.screen
 
+import android.Manifest
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.otterland.foundation.design.component.ListCard
+import com.otterland.foundation.design.component.PermissionChecker
 import com.otterland.foundation.design.component.SingleLineListItem
 import com.otterland.foundation.design.theme.OtterLandTheme
-import com.outterland.feature.systeminfo.CPUInfoUiState
 import com.outterland.feature.systeminfo.R
-import com.outterland.feature.systeminfo.SystemInfoViewModel
+import com.outterland.feature.systeminfo.ui.navigation.Route
 
-enum class SystemInfoItem(
+internal enum class SystemInfoItem(
     val iconResource: Int,
     val label: String,
-    val screen: @Composable () -> Unit
+    val route: Route,
 ) {
     DISPLAY_INFO(
         iconResource = R.drawable.ic_brightness,
         label = "Display",
-        screen = {}
+        route = Route.DisplayInfo,
     ),
     Storage(
         iconResource = R.drawable.ic_memory,
         label = "Storage",
-        screen = {}
+        route = Route.DisplayInfo,
     ),
 }
 
 @Composable
-internal fun SystemInfoScreen(systemInfoViewModel: SystemInfoViewModel) {
-    val cpuInfoUiState by systemInfoViewModel.cpuInfoUiStateFlow.collectAsState()
-
-    SideEffect {
-        systemInfoViewModel.getCPUInfo()
+internal fun SystemInfoScreen(navigate: (Route) -> Unit) {
+    SystemInfoLayout {
+        navigate(it.route)
     }
-
-    SystemInfoLayout(
-        cpuInfoUiState = cpuInfoUiState,
-    )
 }
 
 @Composable
-internal fun SystemInfoLayout(
-    cpuInfoUiState: CPUInfoUiState,
-) {
-    val cardColors =
-        CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
-    val cardElevation = CardDefaults.elevatedCardElevation(defaultElevation = 1.dp)
-    val cardShape = CardDefaults.elevatedShape
+internal fun SystemInfoLayout(onItemSelected: (SystemInfoItem) -> Unit) {
+    var permissionRequested by remember {
+        mutableStateOf(false)
+    }
+
+    if(permissionRequested) {
+        PermissionChecker(
+            permission = Manifest.permission.WRITE_SETTINGS,
+            onGranted = {
+                onItemSelected(SystemInfoItem.DISPLAY_INFO)
+            },
+            onDenied = {
+                permissionRequested = false
+            },
+            reason = "The app needs your permission to adjust the display brightness."
+        )
+    }
 
     Column(
         modifier = Modifier.fillMaxSize(),
     ) {
         ListCard(
             items = SystemInfoItem.entries,
-            cardColors = cardColors,
-            carElevation = cardElevation,
-            cardShape = cardShape,
+            cardColors = CardDefaults.elevatedCardColors(
+                containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+            ),
+            carElevation = CardDefaults.elevatedCardElevation(defaultElevation = 1.dp),
+            cardShape = CardDefaults.elevatedShape,
         ) { _, item ->
-            key(item) { }
-            SingleLineListItem(
-                item.iconResource,
-                item.label,
-                true,
-            ) { }
+            key(item) {
+                SingleLineListItem(
+                    item.iconResource,
+                    item.label,
+                    true,
+                ) {
+                    if(item == SystemInfoItem.DISPLAY_INFO){
+                        permissionRequested = true
+                    } else {
+                        onItemSelected(item)
+                    }
+                }
+            }
         }
-    }
-}
-
-@Preview
-@Composable
-fun SystemInfoLayoutPreview() {
-    OtterLandTheme {
-        SystemInfoLayout(CPUInfoUiState())
     }
 }

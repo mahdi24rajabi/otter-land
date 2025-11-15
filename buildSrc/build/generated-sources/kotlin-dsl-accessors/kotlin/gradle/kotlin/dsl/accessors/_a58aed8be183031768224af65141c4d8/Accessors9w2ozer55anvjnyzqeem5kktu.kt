@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [lintChecks][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`lintChecks`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
-    get() = named<org.gradle.api.artifacts.Configuration>("lintChecks")
+val org.gradle.api.NamedDomainObjectContainer<Configuration>.`lintChecks`: NamedDomainObjectProvider<Configuration>
+    get() = named<Configuration>("lintChecks")
 
 

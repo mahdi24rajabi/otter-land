@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [testFixturesReleaseCompileOnlyDependenciesMetadata][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`testFixturesReleaseCompileOnlyDependenciesMetadata`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
-    get() = named<org.gradle.api.artifacts.Configuration>("testFixturesReleaseCompileOnlyDependenciesMetadata")
+val org.gradle.api.NamedDomainObjectContainer<Configuration>.`testFixturesReleaseCompileOnlyDependenciesMetadata`: NamedDomainObjectProvider<Configuration>
+    get() = named<Configuration>("testFixturesReleaseCompileOnlyDependenciesMetadata")
 
 

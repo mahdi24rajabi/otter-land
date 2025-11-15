@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [kotlinKlibCommonizerClasspath][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`kotlinKlibCommonizerClasspath`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
-    get() = named<org.gradle.api.artifacts.Configuration>("kotlinKlibCommonizerClasspath")
+val org.gradle.api.NamedDomainObjectContainer<Configuration>.`kotlinKlibCommonizerClasspath`: NamedDomainObjectProvider<Configuration>
+    get() = named<Configuration>("kotlinKlibCommonizerClasspath")
 
 

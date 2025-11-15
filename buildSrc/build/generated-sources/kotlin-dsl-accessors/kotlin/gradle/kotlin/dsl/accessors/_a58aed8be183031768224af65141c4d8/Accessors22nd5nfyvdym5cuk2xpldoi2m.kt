@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [releaseCompileOnly][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`releaseCompileOnly`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
-    get() = named<org.gradle.api.artifacts.Configuration>("releaseCompileOnly")
+val org.gradle.api.NamedDomainObjectContainer<Configuration>.`releaseCompileOnly`: NamedDomainObjectProvider<Configuration>
+    get() = named<Configuration>("releaseCompileOnly")
 
 

@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [kotlinBuildToolsApiClasspath][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`kotlinBuildToolsApiClasspath`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
-    get() = named<org.gradle.api.artifacts.Configuration>("kotlinBuildToolsApiClasspath")
+val org.gradle.api.NamedDomainObjectContainer<Configuration>.`kotlinBuildToolsApiClasspath`: NamedDomainObjectProvider<Configuration>
+    get() = named<Configuration>("kotlinBuildToolsApiClasspath")
 
 

@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [testReleaseImplementation][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`testReleaseImplementation`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
-    get() = named<org.gradle.api.artifacts.Configuration>("testReleaseImplementation")
+val org.gradle.api.NamedDomainObjectContainer<Configuration>.`testReleaseImplementation`: NamedDomainObjectProvider<Configuration>
+    get() = named<Configuration>("testReleaseImplementation")
 
 

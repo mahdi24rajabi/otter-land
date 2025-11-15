@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [deviceCheck][org.gradle.api.Task] task.
  */
 internal
-val TaskContainer.`deviceCheck`: TaskProvider<org.gradle.api.Task>
-    get() = named<org.gradle.api.Task>("deviceCheck")
+val TaskContainer.`deviceCheck`: TaskProvider<Task>
+    get() = named<Task>("deviceCheck")
 
 

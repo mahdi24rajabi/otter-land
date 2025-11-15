@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [kotlinBouncyCastleConfiguration][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`kotlinBouncyCastleConfiguration`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
-    get() = named<org.gradle.api.artifacts.Configuration>("kotlinBouncyCastleConfiguration")
+val org.gradle.api.NamedDomainObjectContainer<Configuration>.`kotlinBouncyCastleConfiguration`: NamedDomainObjectProvider<Configuration>
+    get() = named<Configuration>("kotlinBouncyCastleConfiguration")
 
 

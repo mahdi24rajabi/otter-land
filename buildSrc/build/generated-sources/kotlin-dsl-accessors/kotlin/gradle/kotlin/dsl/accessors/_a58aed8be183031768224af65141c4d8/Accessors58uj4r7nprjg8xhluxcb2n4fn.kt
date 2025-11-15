@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [kspDebug][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`kspDebug`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
-    get() = named<org.gradle.api.artifacts.Configuration>("kspDebug")
+val org.gradle.api.NamedDomainObjectContainer<Configuration>.`kspDebug`: NamedDomainObjectProvider<Configuration>
+    get() = named<Configuration>("kspDebug")
 
 

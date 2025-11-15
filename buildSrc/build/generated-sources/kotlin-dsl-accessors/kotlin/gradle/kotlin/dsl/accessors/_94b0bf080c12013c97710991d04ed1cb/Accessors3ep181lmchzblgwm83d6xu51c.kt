@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [kotlinInternalAbiValidation][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`kotlinInternalAbiValidation`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
-    get() = named<org.gradle.api.artifacts.Configuration>("kotlinInternalAbiValidation")
+val org.gradle.api.NamedDomainObjectContainer<Configuration>.`kotlinInternalAbiValidation`: NamedDomainObjectProvider<Configuration>
+    get() = named<Configuration>("kotlinInternalAbiValidation")
 
 

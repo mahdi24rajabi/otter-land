@@ -8,5 +8,5 @@ class ResourceImageMapper: Mapper<ResourceImage, Int> {
     override fun map(
         data: ResourceImage,
         options: Options
-    ): Int? = data.id
+    ): Int = data.id
 }

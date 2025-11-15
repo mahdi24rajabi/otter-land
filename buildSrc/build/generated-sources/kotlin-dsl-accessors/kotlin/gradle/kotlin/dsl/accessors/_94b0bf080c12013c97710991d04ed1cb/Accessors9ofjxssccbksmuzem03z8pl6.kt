@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [base][org.gradle.api.plugins.BasePluginExtension] extension.
  */
 internal
-val org.gradle.api.Project.`base`: org.gradle.api.plugins.BasePluginExtension get() =
+val Project.`base`: org.gradle.api.plugins.BasePluginExtension get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("base") as org.gradle.api.plugins.BasePluginExtension
 
 /**
  * Configures the [base][org.gradle.api.plugins.BasePluginExtension] extension.
  */
 internal
-fun org.gradle.api.Project.`base`(configure: Action<org.gradle.api.plugins.BasePluginExtension>): Unit =
+fun Project.`base`(configure: Action<org.gradle.api.plugins.BasePluginExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("base", configure)
 
 

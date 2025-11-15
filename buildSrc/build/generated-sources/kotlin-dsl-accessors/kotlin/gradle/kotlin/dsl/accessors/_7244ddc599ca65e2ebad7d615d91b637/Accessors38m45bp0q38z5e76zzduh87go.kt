@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [composeCompiler][org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradlePluginExtension] extension.
  */
 internal
-val org.gradle.api.Project.`composeCompiler`: org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradlePluginExtension get() =
+val Project.`composeCompiler`: org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradlePluginExtension get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("composeCompiler") as org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradlePluginExtension
 
 /**
  * Configures the [composeCompiler][org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradlePluginExtension] extension.
  */
 internal
-fun org.gradle.api.Project.`composeCompiler`(configure: Action<org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradlePluginExtension>): Unit =
+fun Project.`composeCompiler`(configure: Action<org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradlePluginExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("composeCompiler", configure)
 
 

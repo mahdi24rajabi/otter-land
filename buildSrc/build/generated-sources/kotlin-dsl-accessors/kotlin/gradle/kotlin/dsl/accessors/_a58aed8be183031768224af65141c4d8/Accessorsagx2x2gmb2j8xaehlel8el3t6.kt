@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [apiDependenciesMetadata][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`apiDependenciesMetadata`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
-    get() = named<org.gradle.api.artifacts.Configuration>("apiDependenciesMetadata")
+val org.gradle.api.NamedDomainObjectContainer<Configuration>.`apiDependenciesMetadata`: NamedDomainObjectProvider<Configuration>
+    get() = named<Configuration>("apiDependenciesMetadata")
 
 

@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [kotlin][org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension] extension.
  */
 internal
-val org.gradle.api.Project.`kotlin`: org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension get() =
+val Project.`kotlin`: org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("kotlin") as org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 
 /**
  * Configures the [kotlin][org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension] extension.
  */
 internal
-fun org.gradle.api.Project.`kotlin`(configure: Action<org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension>): Unit =
+fun Project.`kotlin`(configure: Action<org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("kotlin", configure)
 
 

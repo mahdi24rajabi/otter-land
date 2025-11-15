@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [androidTestCompileOnly][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`androidTestCompileOnly`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
-    get() = named<org.gradle.api.artifacts.Configuration>("androidTestCompileOnly")
+val org.gradle.api.NamedDomainObjectContainer<Configuration>.`androidTestCompileOnly`: NamedDomainObjectProvider<Configuration>
+    get() = named<Configuration>("androidTestCompileOnly")
 
 

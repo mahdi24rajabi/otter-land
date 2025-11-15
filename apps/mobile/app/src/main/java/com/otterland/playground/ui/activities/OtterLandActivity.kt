@@ -1,11 +1,14 @@
 package com.otterland.playground.ui.activities
 
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.foundation.imageloader.coil.core.CoilNetworkImageLoader
 import com.otterland.foundation.design.theme.OtterLandTheme

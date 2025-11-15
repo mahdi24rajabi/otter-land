@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardElevation
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
@@ -35,7 +36,7 @@ fun <T> ListCard(
     ) {
         Column(
             modifier = Modifier
-                .background(Color.Transparent)
+                .background(MaterialTheme.colorScheme.surface)
                 .wrapContentHeight()
                 .fillMaxWidth()
                 .padding(

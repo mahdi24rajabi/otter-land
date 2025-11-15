@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [testFixturesAnnotationProcessor][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`testFixturesAnnotationProcessor`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
-    get() = named<org.gradle.api.artifacts.Configuration>("testFixturesAnnotationProcessor")
+val org.gradle.api.NamedDomainObjectContainer<Configuration>.`testFixturesAnnotationProcessor`: NamedDomainObjectProvider<Configuration>
+    get() = named<Configuration>("testFixturesAnnotationProcessor")
 
 

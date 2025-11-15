@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [assembleAndroidTest][org.gradle.api.Task] task.
  */
 internal
-val TaskContainer.`assembleAndroidTest`: TaskProvider<org.gradle.api.Task>
-    get() = named<org.gradle.api.Task>("assembleAndroidTest")
+val TaskContainer.`assembleAndroidTest`: TaskProvider<Task>
+    get() = named<Task>("assembleAndroidTest")
 
 

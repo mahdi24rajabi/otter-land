@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [releaseRuntimeOnly][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`releaseRuntimeOnly`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
-    get() = named<org.gradle.api.artifacts.Configuration>("releaseRuntimeOnly")
+val org.gradle.api.NamedDomainObjectContainer<Configuration>.`releaseRuntimeOnly`: NamedDomainObjectProvider<Configuration>
+    get() = named<Configuration>("releaseRuntimeOnly")
 
 

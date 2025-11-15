@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [reporting][org.gradle.api.reporting.ReportingExtension] extension.
  */
 internal
-val org.gradle.api.Project.`reporting`: org.gradle.api.reporting.ReportingExtension get() =
+val Project.`reporting`: org.gradle.api.reporting.ReportingExtension get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("reporting") as org.gradle.api.reporting.ReportingExtension
 
 /**
  * Configures the [reporting][org.gradle.api.reporting.ReportingExtension] extension.
  */
 internal
-fun org.gradle.api.Project.`reporting`(configure: Action<org.gradle.api.reporting.ReportingExtension>): Unit =
+fun Project.`reporting`(configure: Action<org.gradle.api.reporting.ReportingExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("reporting", configure)
 
 

@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [peerNpm][org.jetbrains.kotlin.gradle.targets.js.npm.PeerNpmDependencyExtension] extension.
  */
 internal
-val org.gradle.api.artifacts.dsl.DependencyHandler.`peerNpm`: org.jetbrains.kotlin.gradle.targets.js.npm.PeerNpmDependencyExtension get() =
+val DependencyHandler.`peerNpm`: org.jetbrains.kotlin.gradle.targets.js.npm.PeerNpmDependencyExtension get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("peerNpm") as org.jetbrains.kotlin.gradle.targets.js.npm.PeerNpmDependencyExtension
 
 /**
  * Configures the [peerNpm][org.jetbrains.kotlin.gradle.targets.js.npm.PeerNpmDependencyExtension] extension.
  */
 internal
-fun org.gradle.api.artifacts.dsl.DependencyHandler.`peerNpm`(configure: Action<org.jetbrains.kotlin.gradle.targets.js.npm.PeerNpmDependencyExtension>): Unit =
+fun DependencyHandler.`peerNpm`(configure: Action<org.jetbrains.kotlin.gradle.targets.js.npm.PeerNpmDependencyExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("peerNpm", configure)
 
 

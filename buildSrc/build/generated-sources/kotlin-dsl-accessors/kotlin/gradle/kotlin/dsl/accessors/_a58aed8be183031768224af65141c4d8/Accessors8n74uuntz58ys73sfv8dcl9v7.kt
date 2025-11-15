@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [androidTestDebugWearApp][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`androidTestDebugWearApp`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
-    get() = named<org.gradle.api.artifacts.Configuration>("androidTestDebugWearApp")
+val org.gradle.api.NamedDomainObjectContainer<Configuration>.`androidTestDebugWearApp`: NamedDomainObjectProvider<Configuration>
+    get() = named<Configuration>("androidTestDebugWearApp")
 
 

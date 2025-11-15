@@ -3,7 +3,6 @@
  *
  * @see Android_ui_libraries_gradle
  */
-public
 class AndroidUiLibrariesPlugin : org.gradle.api.Plugin<org.gradle.api.Project> {
     override fun apply(target: org.gradle.api.Project) {
         try {

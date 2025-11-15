@@ -62,7 +62,7 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Provides the existing [releaseIntransitiveDependenciesMetadata][org.gradle.api.artifacts.Configuration] element.
  */
 internal
-val org.gradle.api.NamedDomainObjectContainer<org.gradle.api.artifacts.Configuration>.`releaseIntransitiveDependenciesMetadata`: NamedDomainObjectProvider<org.gradle.api.artifacts.Configuration>
-    get() = named<org.gradle.api.artifacts.Configuration>("releaseIntransitiveDependenciesMetadata")
+val org.gradle.api.NamedDomainObjectContainer<Configuration>.`releaseIntransitiveDependenciesMetadata`: NamedDomainObjectProvider<Configuration>
+    get() = named<Configuration>("releaseIntransitiveDependenciesMetadata")
 
 

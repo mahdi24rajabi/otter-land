@@ -62,14 +62,14 @@ import org.gradle.kotlin.dsl.accessors.runtime.*
  * Retrieves the [java][org.gradle.api.plugins.JavaPluginExtension] extension.
  */
 internal
-val org.gradle.api.Project.`java`: org.gradle.api.plugins.JavaPluginExtension get() =
+val Project.`java`: org.gradle.api.plugins.JavaPluginExtension get() =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.getByName("java") as org.gradle.api.plugins.JavaPluginExtension
 
 /**
  * Configures the [java][org.gradle.api.plugins.JavaPluginExtension] extension.
  */
 internal
-fun org.gradle.api.Project.`java`(configure: Action<org.gradle.api.plugins.JavaPluginExtension>): Unit =
+fun Project.`java`(configure: Action<org.gradle.api.plugins.JavaPluginExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("java", configure)
 
 
