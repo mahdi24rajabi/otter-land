@@ -20,6 +20,7 @@ rootProject.name = "Otter Land"
 
 include(":apps:mobile:app")
 include(":feature:display")
+include(":feature:systeminfo")
 
 include(":data:systeminfo")
 
@@ -32,4 +33,4 @@ include(":libs:imageloader:coil:network:okhttp")
 include(":libs:imageloader:coil:ui")
 include(":libs:imageloader:coil:network:api")
 include(":libs:foundation:design")
-include(":feature:systeminfo")
+include(":libs:foundation:permission")

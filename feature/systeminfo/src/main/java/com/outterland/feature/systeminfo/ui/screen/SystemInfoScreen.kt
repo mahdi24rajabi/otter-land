@@ -5,19 +5,30 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.adaptive.collectFoldingFeaturesAsState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.otterland.foundation.design.component.ListCard
 import com.otterland.foundation.design.component.PermissionChecker
 import com.otterland.foundation.design.component.SingleLineListItem
+import com.otterland.foundation.design.uistate.PermissionUiState
 import com.outterland.feature.systeminfo.R
+import com.outterland.feature.systeminfo.SystemInfoViewModel
 import com.outterland.feature.systeminfo.ui.navigation.Route
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 
 internal enum class SystemInfoItem(
     val iconResource: Int,
@@ -41,29 +52,58 @@ internal enum class SystemInfoItem(
 
 @Composable
 internal fun SystemInfoScreen(navigate: (Route) -> Unit) {
-    SystemInfoLayout {
+    val systemInfoViewModel: SystemInfoViewModel = hiltViewModel()
+
+    SystemInfoLayout(
+        askUserForThePermissionStateFlow = systemInfoViewModel.askUserForPermission,
+        requestSettingPermission = {
+            systemInfoViewModel.getSettingPermission()
+        }
+    ) {
         navigate(it.route)
     }
 }
 
 @Composable
-internal fun SystemInfoLayout(onItemSelected: (SystemInfoItem) -> Unit) {
-    var permissionRequested by remember {
-        mutableStateOf(false)
+internal fun SystemInfoLayout(
+    askUserForThePermissionStateFlow: SharedFlow<PermissionUiState>,
+    requestSettingPermission: () -> Unit,
+    onItemSelected: (SystemInfoItem) -> Unit,
+) {
+    val scope = rememberCoroutineScope()
+    var permissionUiState by remember {
+        mutableStateOf<PermissionUiState?>(null)
     }
 
-    if (permissionRequested) {
-        PermissionChecker(
-            permission = Manifest.permission.WRITE_SETTINGS,
-            onGranted = {
-                onItemSelected(SystemInfoItem.DISPLAY_INFO)
-            },
-            onDenied = {
-                permissionRequested = false
-            },
-            reason = "The app needs your permission to adjust the display brightness."
-        )
+    var requestPermissionForItem by remember {
+        mutableStateOf<SystemInfoItem?>(null)
     }
+
+    LaunchedEffect(Unit) {
+        askUserForThePermissionStateFlow.collect {
+            permissionUiState = it
+        }
+    }
+
+    LaunchedEffect(requestPermissionForItem) {
+        when (requestPermissionForItem) {
+            SystemInfoItem.DISPLAY_INFO -> requestSettingPermission()
+            else -> {}
+        }
+    }
+
+
+    PermissionChecker(
+        permissionState = permissionUiState,
+        onDenied = {
+
+        },
+        onGranted = {
+            requestPermissionForItem?.let {
+                onItemSelected(it)
+            }
+        }
+    )
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -83,7 +123,7 @@ internal fun SystemInfoLayout(onItemSelected: (SystemInfoItem) -> Unit) {
                     true,
                 ) {
                     if (item.needsPermission) {
-                        permissionRequested = true
+                        requestPermissionForItem = item
                     } else {
                         onItemSelected(item)
                     }
