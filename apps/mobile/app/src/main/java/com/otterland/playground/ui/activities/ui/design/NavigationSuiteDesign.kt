@@ -63,8 +63,7 @@ fun navigationSuiteType(adaptiveInfo: WindowAdaptiveInfo) =
     }
 
 @Composable
-fun Modifier.navigationSuite() = Modifier
-    .fillMaxSize()
+fun Modifier.navigationSuite() = fillMaxSize()
     .background(color = MaterialTheme.colorScheme.secondaryContainer)
     .verticalScroll(rememberScrollState())
     .padding(

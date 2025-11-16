@@ -1,6 +1,7 @@
 package com.otterland.foundation.design.component
 
 import android.app.Activity
+import android.content.pm.PackageManager
 import androidx.activity.compose.LocalActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -17,21 +18,9 @@ fun PermissionChecker(
     reason: String?,
     onGranted: () -> Unit,
     onDenied: () -> Unit
-){
-    val activity: Activity? = LocalActivity.current
-    var showRationaleDialog by remember { mutableStateOf(false) }
-
-    if(showRationaleDialog){
-        PermissionRationaleDialog(
-            title = "Permission request",
-            reason = "${reason}",
-            onDenied = {
-                onDenied()
-            },
-            onApprove = {
-            }
-        )
-    }
+) {
+    var showRationale by remember { mutableStateOf(false) }
+    var sendPermissionRequest by remember { mutableStateOf(false) }
 
     val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestPermission(),
@@ -40,19 +29,39 @@ fun PermissionChecker(
             result -> {
                 onGranted()
             }
-            activity.shouldShowPermissionRationale(permission = permission) -> {
-                showRationaleDialog = true
-            }
-            else -> {
-                showRationaleDialog = true
-            }
+            else -> onDenied()
         }
     }
 
-    LaunchedEffect(permission) {
-        permissionLauncher.launch(permission)
+    LaunchedEffect(sendPermissionRequest) {
+        if (sendPermissionRequest) {
+            permissionLauncher.launch(permission)
+        }
+    }
+
+    when {
+        LocalActivity.current.permissionIsGranted(permission) -> onGranted()
+        !showRationale && LocalActivity.current.shouldShowPermissionRationale(
+            permission
+        ) -> {
+            PermissionRationaleDialog(
+                title = "Permission request",
+                reason = "${reason}",
+                onDenied = {
+                    onDenied()
+                },
+                onApprove = {
+                    sendPermissionRequest = true
+                }
+            )
+        }
+        else -> sendPermissionRequest = true
     }
 }
 
 private fun Activity?.shouldShowPermissionRationale(permission: String) =
     this?.shouldShowRequestPermissionRationale(permission) ?: false
+
+
+private fun Activity?.permissionIsGranted(permission: String) =
+    this?.checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED
