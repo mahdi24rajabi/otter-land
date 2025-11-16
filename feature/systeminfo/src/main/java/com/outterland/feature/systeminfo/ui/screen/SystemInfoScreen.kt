@@ -1,14 +1,11 @@
 package com.outterland.feature.systeminfo.ui.screen
 
-import android.Manifest
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.adaptive.collectFoldingFeaturesAsState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
@@ -18,7 +15,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.otterland.foundation.design.component.ListCard
 import com.otterland.foundation.design.component.PermissionChecker
 import com.otterland.foundation.design.component.SingleLineListItem
@@ -27,8 +23,6 @@ import com.outterland.feature.systeminfo.R
 import com.outterland.feature.systeminfo.SystemInfoViewModel
 import com.outterland.feature.systeminfo.ui.navigation.Route
 import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 
 internal enum class SystemInfoItem(
     val iconResource: Int,
