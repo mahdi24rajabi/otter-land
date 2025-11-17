@@ -3,7 +3,6 @@ package com.outterland.feature.systeminfo
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.otterland.data.system.SystemRepository
-import com.otterland.data.system.model.CPUInfoModel
 import com.otterland.data.system.model.DisplayInfoModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -46,9 +45,10 @@ internal class DisplayInfoViewModel @Inject constructor(
         brightness = brightness
     )
 
-    fun setBrightness(brightnessValue: Float) {
+    fun setBrightnessAndUpdate(brightnessValue: Float) {
         viewModelScope.launch {
             systemRepository.setDisplayInfo(brightness = brightnessValue)
+            getDisplayInfo()
         }
     }
 

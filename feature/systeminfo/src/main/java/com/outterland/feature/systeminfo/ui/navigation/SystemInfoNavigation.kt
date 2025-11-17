@@ -30,12 +30,8 @@ internal fun NavGraphBuilder.createSystemInfoNavigationGraph(navigate: (Route) -
             navigate(route)
         }
     }
-
     composable<Route.DisplayInfo> {
-        val displayInfoViewModel: DisplayInfoViewModel = hiltViewModel()
-        DisplayInfoScreen(
-            displayInfoViewModel = displayInfoViewModel,
-        )
+        DisplayInfoScreen()
     }
 }
 
