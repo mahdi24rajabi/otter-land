@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
 import android.provider.UserDictionary
+import android.view.WindowManager
 import com.otterland.data.system.model.DisplayInfoModel
 import kotlinx.coroutines.coroutineScope
 
@@ -24,21 +25,20 @@ class SystemRepository(
     }
 
     suspend fun getDisplayInfo() = coroutineScope {
-        val brightness = Settings.System.getFloat(
+        val brightness = Settings.System.getInt(
             application.contentResolver,
             Settings.System.SCREEN_BRIGHTNESS
         )
-        println("===============> ${brightness}")
         DisplayInfoModel(
-            brightness = brightness
+            brightness = brightness.toFloat()
         )
     }
 
     suspend fun setDisplayInfo(brightness: Float) {
-        Settings.System.putFloat(
+        Settings.System.putInt(
             application.contentResolver,
             Settings.System.SCREEN_BRIGHTNESS,
-            brightness
+            brightness.toInt()
         )
     }
 }

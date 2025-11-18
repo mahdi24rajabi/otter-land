@@ -19,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -27,7 +28,9 @@ import com.otterland.foundation.design.component.SingleLineListItem
 import com.outterland.feature.systeminfo.DisplayInfoUiState
 import com.outterland.feature.systeminfo.DisplayInfoViewModel
 import com.outterland.feature.systeminfo.R
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 
 @Composable
 internal fun DisplayInfoScreen() {
@@ -51,22 +54,23 @@ internal fun DisplayInfoLayout(
     onBrightnessChanged: (Float) -> Unit = { _ -> },
 ) {
     val displayInfoState by displayInfoStateFlow.collectAsStateWithLifecycle()
+    var sliderValue by remember {
+        mutableStateOf(displayInfoState.brightness)
+    }
 
     val lightSliderState = rememberSliderState(
         valueRange = 0f..255f,
         steps = 0,
         value = displayInfoState.brightness,
         onValueChangeFinished = {
-
+            onBrightnessChanged(sliderValue)
         }
     )
 
-    var sliderValue by remember {
-        mutableStateOf(displayInfoState.brightness)
-    }
-
-    LaunchedEffect(displayInfoState) {
-        sliderValue = displayInfoState.brightness
+    LaunchedEffect(sliderValue) {
+        launch(Dispatchers.Default) {
+            onBrightnessChanged(sliderValue)
+        }
     }
 
     Column(
@@ -107,7 +111,7 @@ internal fun DisplayInfoLayout(
                 },
                 steps = lightSliderState.steps,
                 onValueChange = { value ->
-                    onBrightnessChanged(value)
+                    sliderValue = value
                 },
                 modifier = Modifier
                     .padding(
