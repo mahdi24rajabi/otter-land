@@ -2,54 +2,62 @@ package com.outterland.feature.systeminfo
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.otterland.data.system.SystemRepository
+import com.otterland.data.system.DisplaySettingProvider
 import com.otterland.data.system.model.DisplayInfoModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 internal class DisplayInfoViewModel @Inject constructor(
-    val systemRepository: SystemRepository
-): ViewModel() {
-
-    private val _displayInfoUiStateFlow: MutableStateFlow<DisplayInfoUiState> = MutableStateFlow<DisplayInfoUiState>(
-        DisplayInfoUiState(0.0f)
-    )
-    val displayInfoUiStateFlow: StateFlow<DisplayInfoUiState> = _displayInfoUiStateFlow
-
-    fun getCPUInfo() {
-        viewModelScope.launch(Dispatchers.IO) {
-            systemRepository.getDisplayInfo()
-                .asUiSate()
-                .let {
-                    _displayInfoUiStateFlow.value = it
-                }
+    val displaySettingProvider: DisplaySettingProvider
+) : ViewModel() {
+    private val observer = DisplaySettingProvider.SettingObserver(
+        onBrightnessChanged = {
+            displaySettingProvider.getDisplayInfo().let { displaySettingModel ->
+                _displayInfoUiStateFlow.value = displaySettingModel.asUiSate()
+            }
+        },
+        onBrightnessAdjustmentMode = {
+            displaySettingProvider.getDisplayInfo().let { displaySettingModel ->
+                _displayInfoUiStateFlow.value = displaySettingModel.asUiSate()
+            }
         }
+    )
+
+    init {
+        displaySettingProvider.observeChanges(observer)
     }
 
-    fun getDisplayInfo() {
-        viewModelScope.launch(Dispatchers.IO) {
-            systemRepository.getDisplayInfo()
-                .asUiSate()
-                .let {
-                    _displayInfoUiStateFlow.value = it
-                }
-        }
-    }
-
-    private fun DisplayInfoModel.asUiSate() = DisplayInfoUiState(
-        brightness = brightness
+    private val _displayInfoUiStateFlow: MutableStateFlow<DisplayInfoUiState> = MutableStateFlow(
+        displaySettingProvider.getDisplayInfo().asUiSate()
     )
+    val displayInfoUiStateFlow: StateFlow<DisplayInfoUiState> = _displayInfoUiStateFlow.asStateFlow()
 
     fun setBrightnessAndUpdate(brightnessValue: Float) {
         viewModelScope.launch {
-            systemRepository.setDisplayInfo(brightness = brightnessValue)
-            getDisplayInfo()
+            displaySettingProvider.setDisplayBrightness(brightness = brightnessValue)
         }
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        displaySettingProvider.stopObserveChanges(observer)
+    }
+
+    fun enableManualDisplayAdjustment() {
+        displaySettingProvider.enableManualDisplayBrightnessAdjustment()
+    }
+
+    fun disableManualDisplayAdjustment() {
+        displaySettingProvider.disableManualDisplayBrightnessAdjustment()
+    }
 }
+
+private fun DisplayInfoModel.asUiSate() = DisplayInfoUiState(
+    brightness = brightness,
+    manualBrightnessAdjustment = manualBrightnessAdjustment,
+)

@@ -22,7 +22,7 @@ include(":apps:mobile:app")
 include(":feature:display")
 include(":feature:systeminfo")
 
-include(":data:systeminfo")
+include(":libs:foundation:systeminfo")
 
 include(":libs:foundation:network:api")
 include(":libs:foundation:network:ktor")

@@ -1,12 +1,9 @@
 package com.otterland.playground.ui.activities.ui.design
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.fitInside
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -17,6 +14,7 @@ import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteDefaul
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.WindowInsetsRulers
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -25,7 +23,7 @@ fun navigationSuiteColors() = NavigationSuiteDefaults.colors(
     shortNavigationBarContentColor = MaterialTheme.colorScheme.surfaceContainer,
     navigationBarContainerColor = MaterialTheme.colorScheme.surfaceContainer,
     navigationBarContentColor = MaterialTheme.colorScheme.surfaceContainer,
-    navigationRailContainerColor = MaterialTheme.colorScheme.errorContainer,
+    navigationRailContainerColor = MaterialTheme.colorScheme.surfaceContainer,
     navigationRailContentColor = MaterialTheme.colorScheme.onSurface,
     wideNavigationRailColors = WideNavigationRailDefaults.colors(
         contentColor = MaterialTheme.colorScheme.surfaceContainer,
@@ -55,7 +53,7 @@ fun navigationSuiteType(adaptiveInfo: WindowAdaptiveInfo) =
             }
 
             in 600 until 800 -> {
-                NavigationSuiteType.ShortNavigationBarMedium
+                NavigationSuiteType.NavigationRail
             }
 
             else -> NavigationSuiteType.WideNavigationRailCollapsed
@@ -67,8 +65,6 @@ fun Modifier.navigationSuite() = fillMaxSize()
     .background(color = MaterialTheme.colorScheme.secondaryContainer)
     .verticalScroll(rememberScrollState())
     .padding(
-        top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding(),
-        bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding(),
         start = 16.dp,
         end = 16.dp
     )
