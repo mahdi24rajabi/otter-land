@@ -9,15 +9,18 @@ import com.otterland.imageloader.network.api.NetworkComponent
 import kotlin.reflect.KProperty
 import kotlin.time.ExperimentalTime
 
-class OkhttpImageLoaderComponent @OptIn(ExperimentalCoilApi::class, ExperimentalTime::class) constructor(
+class OkhttpImageLoaderComponent @OptIn(
+    ExperimentalCoilApi::class,
+    ExperimentalTime::class
+) constructor(
     okhttpNetworkProvider: OkHttpClientNetworkConnectionProvider,
     cacheStrategy: CacheControlCacheStrategy = CacheControlCacheStrategy(),
-): NetworkComponent {
+) : NetworkComponent {
 
     @OptIn(ExperimentalCoilApi::class)
     private val networkFetcherFactory: NetworkFetcher.Factory by lazy {
         OkHttpNetworkFetcherFactory(
-            callFactory = {okhttpNetworkProvider.cloneFromBase()},
+            callFactory = { okhttpNetworkProvider.cloneFromBase() },
             cacheStrategy = { cacheStrategy },
         )
     }

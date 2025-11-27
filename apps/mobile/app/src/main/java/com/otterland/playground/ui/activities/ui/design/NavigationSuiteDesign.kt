@@ -1,9 +1,12 @@
 package com.otterland.playground.ui.activities.ui.design
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fitInside
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsIgnoringVisibility
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -14,8 +17,6 @@ import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteDefaul
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.WindowInsetsRulers
-import androidx.compose.ui.unit.dp
 
 @Composable
 fun navigationSuiteColors() = NavigationSuiteDefaults.colors(
@@ -60,11 +61,10 @@ fun navigationSuiteType(adaptiveInfo: WindowAdaptiveInfo) =
         }
     }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun Modifier.navigationSuite() = fillMaxSize()
     .background(color = MaterialTheme.colorScheme.secondaryContainer)
     .verticalScroll(rememberScrollState())
-    .padding(
-        start = 16.dp,
-        end = 16.dp
-    )
+    .windowInsetsPadding(WindowInsets.statusBarsIgnoringVisibility)
+    .windowInsetsPadding(WindowInsets.displayCutout)

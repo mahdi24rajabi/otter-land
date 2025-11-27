@@ -1,5 +1,5 @@
 private val Project.libs: VersionCatalog
-    get () = project.versionCatalogs.find("libs").get()
+    get() = project.versionCatalogs.find("libs").get()
 
 dependencies {
     add("implementation", libs.findLibrary("ui-navigation-view").get())

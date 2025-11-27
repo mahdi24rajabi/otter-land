@@ -5,7 +5,7 @@ plugins {
 }
 
 private val Project.libs: VersionCatalog
-    get () = project.versionCatalogs.find("libs").get()
+    get() = project.versionCatalogs.find("libs").get()
 
 android {
     compileSdk = 36

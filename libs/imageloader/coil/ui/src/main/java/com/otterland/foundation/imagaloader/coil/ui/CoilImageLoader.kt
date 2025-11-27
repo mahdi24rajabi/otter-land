@@ -6,8 +6,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import coil3.SingletonImageLoader
 import coil3.compose.AsyncImage
-import com.otterland.foundation.imageloader.ResourceImage
 import com.otterland.foundation.imageloader.RemoteImage
+import com.otterland.foundation.imageloader.ResourceImage
 
 @Composable
 fun CoilImageLoader(

@@ -1,17 +1,23 @@
 package com.otterland.data.system
 
 import android.app.Application
+import android.app.UiModeManager
+import android.app.UiModeManager.MODE_NIGHT_YES
+import android.content.Context
 import android.database.ContentObserver
 import android.net.Uri
+import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
+import androidx.appcompat.app.AppCompatDelegate
 import com.otterland.data.system.model.DisplayInfoModel
 
 class DisplaySettingProvider(
     application: Application
 ) {
     private val resolver = application.contentResolver
+    private val uiManager = application.getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
 
     class SettingObserver(
         val onBrightnessChanged: () -> Unit,

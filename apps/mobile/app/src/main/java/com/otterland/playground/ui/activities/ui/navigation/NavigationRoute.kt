@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 
 sealed class Route {
     @Serializable
-    object Home: Route()
+    object Home : Route()
 }
 
 

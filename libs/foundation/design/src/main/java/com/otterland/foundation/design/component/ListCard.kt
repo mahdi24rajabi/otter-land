@@ -14,8 +14,6 @@ import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
-import kotlin.collections.forEachIndexed
-
 
 
 @Composable
@@ -24,7 +22,7 @@ fun <T> ListCard(
     cardColors: CardColors,
     carElevation: CardElevation,
     cardShape: Shape,
-    listItemContent: @Composable (Int, T) -> Unit = {_, _ -> }
+    listItemContent: @Composable (Int, T) -> Unit = { _, _ -> }
 ) {
 
     Card(

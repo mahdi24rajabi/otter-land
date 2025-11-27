@@ -26,7 +26,7 @@ fun SingleLineListItem(
     label: String,
     expandable: Boolean,
     onExpand: () -> Unit,
-){
+) {
     Row(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.surface)
@@ -35,7 +35,8 @@ fun SingleLineListItem(
             .padding(
                 start = 16.dp, end = 16.dp,
                 top = 8.dp, bottom = 8.dp,
-            ).clickable(expandable){
+            )
+            .clickable(expandable) {
                 onExpand()
             },
     ) {
@@ -51,7 +52,9 @@ fun SingleLineListItem(
         Text(
             text = label,
             textAlign = TextAlign.Start,
-            modifier = Modifier.align(Alignment.CenterVertically).weight(1.0f),
+            modifier = Modifier
+                .align(Alignment.CenterVertically)
+                .weight(1.0f),
             fontFamily = MaterialTheme.typography.bodyLarge.fontFamily,
             fontSize = MaterialTheme.typography.bodyLarge.fontSize,
             fontStyle = MaterialTheme.typography.bodyLarge.fontStyle,
@@ -61,7 +64,7 @@ fun SingleLineListItem(
             thickness = 16.dp,
             color = Color.Transparent,
         )
-        if(expandable) {
+        if (expandable) {
             Icon(
                 painter = painterResource(R.drawable.ic_right_arrow),
                 contentDescription = "",

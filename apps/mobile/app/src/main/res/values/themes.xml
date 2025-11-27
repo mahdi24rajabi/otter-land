@@ -1,7 +1,7 @@
 <resources>
     <!-- Base application theme. -->
     <style name="Theme.OtterLand" parent="Theme.SplashScreen.IconBackground">
-        <item name="postSplashScreenTheme">@style/Theme.MaterialComponents.NoActionBar</item>
+        <item name="postSplashScreenTheme">@style/Theme.Material3.DayNight.NoActionBar</item>
         <item name="splashScreenIconSize">240dp</item>
         <item name="windowSplashScreenBackground">@color/OtterLandPrimary</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_screen</item>

@@ -1,31 +1,27 @@
-package com.otterland.foundation.design.component
+package com.otterland.foundation.permission
 
-import android.Manifest
 import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
 import androidx.activity.compose.LocalActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import com.otterland.foundation.design.uistate.PermissionUiState
-import com.otterland.foundation.design.uistate.PermissionUiState.Type.*
 
 @Composable
 fun PermissionChecker(
-    permissionState: PermissionUiState?,
+    permissionState: PermissionModel?,
     onGranted: () -> Unit,
     onDenied: () -> Unit
 ) {
     val activity = LocalActivity.current
 
     var permissionType by remember {
-        mutableStateOf(InstallTime)
+        mutableStateOf(PermissionModel.Type.InstallTime)
     }
 
     val permissionLauncher = rememberLauncherForActivityResult(
@@ -43,12 +39,14 @@ fun PermissionChecker(
     LaunchedEffect(permissionType) {
         permissionState?.let { permission ->
             when (permissionType) {
-                Special -> {
+                PermissionModel.Type.Special -> {
                     activity.setSpecialPermissionRequest(permission.relatedExternalActivityIntent)
                 }
-                Runtime -> {
+
+                PermissionModel.Type.Runtime -> {
                     permissionLauncher.launch(permission.permission)
                 }
+
                 else -> {
 
                 }
@@ -56,9 +54,9 @@ fun PermissionChecker(
         }
     }
 
-    if(permissionState != null ) {
+    if (permissionState != null) {
         when {
-            permissionState.isGranted -> onGranted()
+            permissionState.grantState == PermissionModel.GrantState.GRANTED -> onGranted()
             LocalActivity.current.shouldShowPermissionRationale(
                 permissionState.permission
             ) -> {

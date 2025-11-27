@@ -8,4 +8,5 @@ android {
 }
 dependencies {
     implementation(libs.androidx.runtime)
+    implementation(libs.androidx.appcompat)
 }

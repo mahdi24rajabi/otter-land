@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.otterland.data.system.DisplaySettingProvider
 import com.otterland.data.system.model.DisplayInfoModel
+import com.otterland.foundation.design.efects.UiModeState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -35,7 +36,8 @@ internal class DisplayInfoViewModel @Inject constructor(
     private val _displayInfoUiStateFlow: MutableStateFlow<DisplayInfoUiState> = MutableStateFlow(
         displaySettingProvider.getDisplayInfo().asUiSate()
     )
-    val displayInfoUiStateFlow: StateFlow<DisplayInfoUiState> = _displayInfoUiStateFlow.asStateFlow()
+    val displayInfoUiStateFlow: StateFlow<DisplayInfoUiState> =
+        _displayInfoUiStateFlow.asStateFlow()
 
     fun setBrightnessAndUpdate(brightnessValue: Float) {
         viewModelScope.launch {

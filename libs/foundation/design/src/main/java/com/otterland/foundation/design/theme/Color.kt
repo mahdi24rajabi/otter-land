@@ -1,4 +1,5 @@
 package com.otterland.foundation.design.theme
+
 import androidx.compose.ui.graphics.Color
 
 val primaryLight = Color(0xFF825514)

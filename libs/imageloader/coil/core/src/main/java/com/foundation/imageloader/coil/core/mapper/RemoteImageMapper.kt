@@ -6,6 +6,6 @@ import coil3.request.Options
 import coil3.toCoilUri
 import com.otterland.foundation.imageloader.RemoteImage
 
-class RemoteImageMapper: Mapper<RemoteImage, Uri> {
+class RemoteImageMapper : Mapper<RemoteImage, Uri> {
     override fun map(data: RemoteImage, options: Options): Uri = data.uri.toCoilUri()
 }

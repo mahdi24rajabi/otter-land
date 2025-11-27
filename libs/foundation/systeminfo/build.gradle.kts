@@ -6,3 +6,6 @@ plugins {
 android {
     namespace = "com.otterland.data.system"
 }
+dependencies {
+    implementation(libs.androidx.appcompat)
+}

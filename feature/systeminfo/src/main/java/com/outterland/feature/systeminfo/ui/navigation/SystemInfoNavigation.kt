@@ -1,13 +1,10 @@
 package com.outterland.feature.systeminfo.ui.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.outterland.feature.systeminfo.DisplayInfoViewModel
-import com.outterland.feature.systeminfo.SystemInfoViewModel
 import com.outterland.feature.systeminfo.ui.screen.DisplayInfoScreen
 import com.outterland.feature.systeminfo.ui.screen.SystemInfoScreen
 import kotlinx.serialization.Serializable
@@ -15,16 +12,16 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal sealed class Route() {
     @Serializable
-    object SystemInfoList: Route()
+    object SystemInfoList : Route()
 
     @Serializable
-    object DisplayInfo: Route()
+    object DisplayInfo : Route()
 
     @Serializable
-    object MemoryInfo: Route()
+    object MemoryInfo : Route()
 }
 
-internal fun NavGraphBuilder.createSystemInfoNavigationGraph(navigate: (Route) -> Unit ){
+internal fun NavGraphBuilder.createSystemInfoNavigationGraph(navigate: (Route) -> Unit) {
     composable<Route.SystemInfoList> { backStackEntry ->
         SystemInfoScreen { route ->
             navigate(route)
@@ -36,12 +33,12 @@ internal fun NavGraphBuilder.createSystemInfoNavigationGraph(navigate: (Route) -
 }
 
 @Composable
-fun SystemInfoNavHost(){
+fun SystemInfoNavHost() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
         startDestination = Route.SystemInfoList,
-    ){
+    ) {
         createSystemInfoNavigationGraph { route ->
             navController.navigate(route = route)
         }

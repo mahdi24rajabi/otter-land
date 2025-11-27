@@ -1,5 +1,3 @@
-import org.gradle.internal.impldep.org.bouncycastle.oer.its.etsi102941.Url
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -8,7 +6,7 @@ pluginManagement {
     }
 }
 
-dependencyResolutionManagement{
+dependencyResolutionManagement {
     repositories {
         gradlePluginPortal()
         mavenCentral()
