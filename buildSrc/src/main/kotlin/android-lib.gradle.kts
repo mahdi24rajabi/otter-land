@@ -21,5 +21,11 @@ android {
         }
     }
 
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true //Roboelectrics
+        }
+    }
+
     buildToolsVersion = "35.0.0"
 }

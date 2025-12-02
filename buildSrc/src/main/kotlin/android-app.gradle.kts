@@ -23,6 +23,22 @@ android {
         }
     }
 
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true //Roboelectrics
+        }
+
+        managedDevices {
+            localDevices {
+                create("Pixel"){
+                    apiLevel = 29
+                    systemImageSource = "google" //or aosp
+                    require64Bit = true
+                }
+            }
+        }
+    }
+
     buildToolsVersion = "35.0.0"
 
 
