@@ -30,7 +30,7 @@ android {
 
         managedDevices {
             localDevices {
-                create("Pixel"){
+                create("Pixel") {
                     apiLevel = 29
                     systemImageSource = "google" //or aosp
                     require64Bit = true

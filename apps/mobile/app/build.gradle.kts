@@ -16,17 +16,34 @@ android {
     }
 
     buildTypes {
+        signingConfigs {
+            maybeCreate("debug").apply {
+
+            }
+            maybeCreate("release").apply {
+
+            }
+        }
+
+        defaultConfig {
+            targetSdk = 36
+        }
+
         debug {
+            isDefault = true
             isMinifyEnabled = false
             applicationIdSuffix = ".debug"
+            isDebuggable = true
+            signingConfig = signingConfigs.getByName("debug")
         }
 
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 
