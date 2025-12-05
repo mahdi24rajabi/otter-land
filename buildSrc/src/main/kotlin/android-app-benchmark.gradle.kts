@@ -2,19 +2,14 @@ plugins {
     id("com.android.test")
 }
 
-private val Project.libs: VersionCatalog
-    get() = project.versionCatalogs.find("libs").get()
+android {
+    compileSdk = 36
 
-//dependencies {
-//    add("implementation", libs.findLibrary("test-junit").get())
-//    add("implementation", libs.findLibrary("test-kotlin-coroutines").get())
-//    add("implementation", libs.findLibrary("test-mokk").get())
-//    add("implementation", libs.findLibrary("test-uiautomator"))
-//    add("implementation", libs.findLibrary("test-benchmark.macro.junit4"))
-//}
+    defaultConfig {
+        minSdk = 24
+    }
+}
 
-//androidComponents {
-//    beforeVariants(selector().all()) {
-//        it.enable = it.buildType == "benchmark"
-//    }
-//}
+dependencies {
+    implementation("com.google.errorprone:error_prone_annotations:2.28.0")
+}

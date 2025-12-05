@@ -22,7 +22,7 @@ import com.otterland.playground.ui.activities.ui.component.NavigationItem
 import com.otterland.playground.ui.activities.ui.design.navigationSuite
 import com.otterland.playground.ui.activities.ui.design.navigationSuiteColors
 import com.otterland.playground.ui.activities.ui.design.navigationSuiteType
-import com.outterland.feature.systeminfo.ui.navigation.SystemInfoNavHost
+import com.otterland.feature.systeminfo.ui.navigation.SystemInfoNavHost
 import kotlinx.coroutines.launch
 
 enum class NavigationItemModel(

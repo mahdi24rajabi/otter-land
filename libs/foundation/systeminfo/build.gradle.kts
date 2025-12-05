@@ -4,8 +4,9 @@ plugins {
 }
 
 android {
-    namespace = "com.otterland.data.system"
+    namespace = "com.otterland.foundation.systeminfo"
 }
+
 dependencies {
     implementation(libs.androidx.appcompat)
 }

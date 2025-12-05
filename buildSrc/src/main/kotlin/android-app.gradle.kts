@@ -48,4 +48,5 @@ dependencies {
     implementation(libs.findLibrary("androidx.appcompat").get())
     implementation(libs.findLibrary("androidx.core.ktx").get())
     implementation(libs.findLibrary("android.google.material").get())
+    androidTestImplementation("com.google.errorprone:error_prone_annotations:2.28.0")
 }

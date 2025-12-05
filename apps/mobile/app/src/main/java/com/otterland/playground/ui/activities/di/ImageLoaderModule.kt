@@ -11,7 +11,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-object ImageLoaderModule {
+class ImageLoaderModule {
 
     @Provides
     fun provideImageLoader(

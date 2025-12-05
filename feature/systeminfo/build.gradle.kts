@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.outterland.feature.systeminfo"
+    namespace = "com.otterland.feature.systeminfo"
 }
 
 dependencies {

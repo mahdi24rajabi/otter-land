@@ -19,13 +19,11 @@ dependencyResolutionManagement {
 rootProject.name = "Otter Land"
 
 include(":apps:mobile:app")
-include(":feature:display")
 include(":feature:systeminfo")
 
 include(":libs:foundation:systeminfo")
 
 include(":libs:foundation:network:api")
-include(":libs:foundation:network:ktor")
 include(":libs:foundation:network:okhttp")
 include(":libs:imageloader:api")
 include(":libs:imageloader:coil:core")

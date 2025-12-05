@@ -39,6 +39,7 @@ android {
 
         release {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -54,9 +55,24 @@ android {
     hilt {
         enableAggregatingTask = true
     }
+
+    packaging {
+        resources {
+            excludes += setOf(
+                "META-INF/LICENSE",
+                "META-INF/LICENSE.txt",
+                "META-INF/LICENSE.md",
+                "META-INF/NOTICE",
+                "META-INF/NOTICE.txt",
+                "META-INF/NOTICE.md"
+            )
+        }
+    }
 }
 
 dependencies {
+    implementation(project(":feature:systeminfo"))
+
     implementation(project(":libs:foundation:design"))
     implementation(project(":libs:foundation:permission"))
 
@@ -69,8 +85,6 @@ dependencies {
     implementation(project(":libs:foundation:network:api"))
     implementation(project(":libs:foundation:network:okhttp"))
     implementation(project(":libs:foundation:systeminfo"))
-
-    implementation(project(":feature:systeminfo"))
 
     implementation(libs.androidx.spashscreen)
 }

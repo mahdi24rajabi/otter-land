@@ -12,6 +12,7 @@ android {
 
     defaultConfig {
         minSdk = 24
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     kotlin {
@@ -42,4 +43,8 @@ android {
     }
 
     buildToolsVersion = "35.0.0"
+}
+
+dependencies {
+    androidTestImplementation("com.google.errorprone:error_prone_annotations:2.28.0")
 }

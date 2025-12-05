@@ -1,7 +1,7 @@
 package com.otterland.playground.ui.activities.di
 
 import android.app.Application
-import com.otterland.data.system.DisplaySettingProvider
+import com.otterland.foundation.systeminfo.DisplaySettingProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,8 +9,8 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-object SystemInfoModule {
+class SystemInfoModule {
 
     @Provides
-    fun provideSystemInfoRepository(application: Application) = DisplaySettingProvider(application)
+    fun provideSystemInfoRepository(application: Application): DisplaySettingProvider = DisplaySettingProvider(application)
 }

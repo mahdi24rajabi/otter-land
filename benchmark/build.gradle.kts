@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.mackrobenchmark)
+    alias(libs.plugins.baselineprofile)
 }
 
 android {
@@ -7,6 +8,11 @@ android {
     targetProjectPath = ":apps:mobile:app"
 
     buildTypes {
+        maybeCreate("debug").apply {
+            isMinifyEnabled = false
+            isDebuggable = true
+        }
+
         maybeCreate("release").apply {
             isMinifyEnabled = true
             isDebuggable = false
@@ -15,31 +21,16 @@ android {
         create("benchmark") {
             initWith(getByName("release"))
             signingConfig = signingConfigs.getByName("debug")
+            matchingFallbacks += listOf("release")
         }
     }
 
 }
 
-//android {
-//    compileSdk {
-//        version = release(36)
-//    }
-//
-//    defaultConfig {
-//        minSdk = 24
-//        targetSdk = 36
-//
-//        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-//    }
-//
-//    buildTypes {
-//        create("benchmark") {
-//            isDebuggable = true
-//            signingConfig = getByName("debug").signingConfig
-//            matchingFallbacks += listOf("release")
-//        }
-//    }
-//
-//    experimentalProperties["android.experimental.self-instrumenting"] = true
-//}
-
+dependencies {
+//    implementation(libs.test.kotlin.coroutines)
+//    implementation(libs.test.mokk)
+    implementation(libs.test.uiautomator)
+    implementation(libs.test.benchmark.macro.junit4)
+//    implementation(libs.test.benchmark.junit)
+}
