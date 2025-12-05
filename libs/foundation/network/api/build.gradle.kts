@@ -4,5 +4,5 @@ plugins {
 }
 
 android {
-    namespace = "com.otterland.foundation.network.api"
+    namespace = "com.otterland.imageloader.network.api"
 }

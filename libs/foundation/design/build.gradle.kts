@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.otterland.foundation.design"
+    namespace = "com.otterland.imageloader.design"
 }
 dependencies {
     implementation(libs.androidx.runtime)

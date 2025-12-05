@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.foundation.imageloader.coil.core"
+    namespace = "com.otterland.imageloader.coil.core"
 }
 
 dependencies {
@@ -14,6 +14,7 @@ dependencies {
     implementation(platform(libs.imageloader.coil.bom))
     implementation(libs.imageloader.coil)
     implementation(libs.imageloader.coil.network.core)
+    implementation(libs.imageloader.coil.core)
     implementation(libs.imageloader.coil.gif)
     implementation(libs.imageloader.coil.svg)
     implementation(libs.imageloader.coil.video)

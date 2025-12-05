@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.otterland.foundation.systeminfo"
+    namespace = "com.otterland.imageloader.systeminfo"
 }
 
 dependencies {

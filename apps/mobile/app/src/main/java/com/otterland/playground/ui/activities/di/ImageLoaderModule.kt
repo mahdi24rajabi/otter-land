@@ -1,9 +1,9 @@
 package com.otterland.playground.ui.activities.di
 
 import android.app.Application
-import com.foundation.imageloader.coil.core.CoilNetworkImageLoader
-import com.otterlan.imageloader.coil.network.okhttp.OkhttpImageLoaderComponent
-import com.otterland.foundation.network.okhttp.OkHttpClientNetworkConnectionProvider
+import com.otterland.imageloader.coil.core.CoilNetworkImageLoader
+import com.otterland.imageloader.coil.okhttp.network.OkhttpImageLoaderComponent
+import com.otterland.imageloader.network.okhttp.OkHttpClientNetworkConnectionProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

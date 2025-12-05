@@ -1,6 +1,6 @@
 package com.otterland.playground.ui.activities.di
 
-import com.otterland.foundation.network.okhttp.OkHttpClientNetworkConnectionProvider
+import com.otterland.imageloader.network.okhttp.OkHttpClientNetworkConnectionProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,5 +11,5 @@ import dagger.hilt.components.SingletonComponent
 class NetworkModule {
 
     @Provides
-    fun provideNetworkConnectionProvider() = OkHttpClientNetworkConnectionProvider()
+    fun provideNetworkConnectionProvider(): OkHttpClientNetworkConnectionProvider = OkHttpClientNetworkConnectionProvider()
 }

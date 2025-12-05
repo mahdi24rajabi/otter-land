@@ -9,8 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.otterland.foundation.design.component.ListCard
-import com.otterland.foundation.design.component.SingleLineListItem
+import com.otterland.imageloader.design.component.ListCard
+import com.otterland.imageloader.design.component.SingleLineListItem
 import com.otterland.feature.systeminfo.R
 import com.otterland.feature.systeminfo.ui.navigation.Route
 

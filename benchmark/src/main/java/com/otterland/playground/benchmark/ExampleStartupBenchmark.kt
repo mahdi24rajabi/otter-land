@@ -1,10 +1,13 @@
 package com.otterland.playground.benchmark
 
+import android.content.Intent
+import androidx.benchmark.macro.FrameTimingMetric
 import androidx.benchmark.macro.StartupMode
 import androidx.benchmark.macro.StartupTimingMetric
 import androidx.benchmark.macro.junit4.MacrobenchmarkRule
 import org.junit.Rule
 import org.junit.Test
+import kotlin.math.log
 
 /**
  * This is an example startup benchmark.
@@ -26,11 +29,14 @@ class ExampleStartupBenchmark {
     @Test
     fun startup() = benchmarkRule.measureRepeated(
         packageName = "com.otterland.playground",
-        metrics = listOf(StartupTimingMetric()),
+        metrics = listOf(
+            StartupTimingMetric(),
+        ),
         iterations = 5,
-        startupMode = StartupMode.COLD
-    ) {
+        startupMode = StartupMode.COLD,
+    ){
         pressHome()
         startActivityAndWait()
+        println("===================> StartUp is done.")
     }
 }

@@ -29,10 +29,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import com.otterland.foundation.design.component.ListItemSwitch
-import com.otterland.foundation.permission.PermissionChecker
-import com.otterland.foundation.permission.PermissionModel
-import com.otterland.foundation.permission.systemSettingPermission
+import com.otterland.imageloader.design.component.ListItemSwitch
+import com.otterland.imageloader.permission.PermissionChecker
+import com.otterland.imageloader.permission.PermissionModel
+import com.otterland.imageloader.permission.systemSettingPermission
 import com.otterland.feature.systeminfo.DisplayInfoUiState
 import com.otterland.feature.systeminfo.DisplayInfoViewModel
 import com.otterland.feature.systeminfo.R

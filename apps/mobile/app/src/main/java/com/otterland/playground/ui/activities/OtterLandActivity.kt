@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.otterland.foundation.design.theme.OtterLandTheme
+import com.otterland.imageloader.design.theme.OtterLandTheme
 import com.otterland.playground.ui.activities.ui.screen.AppScreen
 import dagger.hilt.android.AndroidEntryPoint
 

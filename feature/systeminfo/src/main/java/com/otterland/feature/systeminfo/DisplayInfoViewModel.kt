@@ -2,8 +2,8 @@ package com.otterland.feature.systeminfo
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.otterland.foundation.systeminfo.DisplaySettingProvider
-import com.otterland.foundation.systeminfo.model.DisplayInfoModel
+import com.otterland.imageloader.systeminfo.DisplaySettingProvider
+import com.otterland.imageloader.systeminfo.model.DisplayInfoModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

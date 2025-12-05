@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.otterland.imageloader.network.api"
+    namespace = "com.otterland.imageloader.coil.network.api"
 }
 
 dependencies {

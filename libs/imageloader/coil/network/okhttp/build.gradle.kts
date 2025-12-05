@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.otterlan.imageloader.coil.network.okhttp"
+    namespace = "com.otterland.imageloader.coil.network.okhttp"
 }
 
 dependencies {

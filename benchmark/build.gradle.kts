@@ -1,36 +1,36 @@
 plugins {
     alias(libs.plugins.android.mackrobenchmark)
-    alias(libs.plugins.baselineprofile)
 }
 
 android {
     namespace = "com.otterland.playground.benchmark"
     targetProjectPath = ":apps:mobile:app"
 
+    defaultConfig {
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        testInstrumentationRunnerArguments["androidx.benchmark.dryRunMode.enable"] = "true"
+        testInstrumentationRunnerArguments["androidx.benchmark.compilation.enabled"] = "false"
+        testInstrumentationRunnerArguments["androidx.benchmark.fullTracing.enable"] = "true"
+        testInstrumentationRunnerArguments["androidx.benchmark.profiling.mode"] = "StackSampling"
+        testInstrumentationRunnerArguments["androidx.benchmark.startupProfiles.enable"] = "true"
+        testInstrumentationRunnerArguments["additionalTestOutputDir"] = project.rootDir.path
+    }
+
     buildTypes {
-        maybeCreate("debug").apply {
-            isMinifyEnabled = false
-            isDebuggable = true
-        }
-
-        maybeCreate("release").apply {
-            isMinifyEnabled = true
-            isDebuggable = false
-        }
-
         create("benchmark") {
-            initWith(getByName("release"))
-            signingConfig = signingConfigs.getByName("debug")
+            isDebuggable = true
+            signingConfig = getByName("debug").signingConfig
             matchingFallbacks += listOf("release")
         }
     }
 
+    experimentalProperties["android.experimental.self-instrumenting"] = true
 }
 
 dependencies {
-//    implementation(libs.test.kotlin.coroutines)
-//    implementation(libs.test.mokk)
+    implementation(libs.androidx.junit)
+    implementation(libs.androidx.espresso.core)
     implementation(libs.test.uiautomator)
     implementation(libs.test.benchmark.macro.junit4)
-//    implementation(libs.test.benchmark.junit)
 }

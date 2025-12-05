@@ -1,5 +1,6 @@
 plugins {
     id("com.android.test")
+    id("androidx.baselineprofile")
 }
 
 android {
@@ -7,9 +8,10 @@ android {
 
     defaultConfig {
         minSdk = 24
+        targetSdk = 36
     }
 }
 
 dependencies {
-    implementation("com.google.errorprone:error_prone_annotations:2.28.0")
+    implementation("com.google.errorprone:error_prone_annotations:2.45.0")
 }

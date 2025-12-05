@@ -4,5 +4,5 @@ plugins {
 }
 
 android {
-    namespace = "com.otterland.foundation.permission"
+    namespace = "com.otterland.imageloader.permission"
 }

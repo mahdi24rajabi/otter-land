@@ -18,10 +18,16 @@ android {
     buildTypes {
         signingConfigs {
             maybeCreate("debug").apply {
-
+                storeFile = file( "../../../key_stores/debug_key.jks")
+                keyAlias = "otterland_debug"
+                keyPassword = "Test2025"
+                storePassword = "Test2025"
             }
             maybeCreate("release").apply {
-
+                storeFile = file("../../../key_stores/debug_key.jks")
+                keyAlias = "otterland_debug"
+                keyPassword = "Test2025"
+                storePassword = "Test2025"
             }
         }
 
@@ -39,12 +45,21 @@ android {
 
         release {
             isMinifyEnabled = true
-            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = signingConfigs.getByName("debug")
+        }
+
+        create("benchmarch"){
+            initWith(getByName("release"))
+            matchingFallbacks += listOf("release")
+        }
+        create("benchmark") {
+            initWith(buildTypes.getByName("release"))
+            matchingFallbacks += listOf("release")
+            isDebuggable = false
         }
     }
 

@@ -1,7 +1,7 @@
 package com.otterland.playground.ui.activities.di
 
 import android.app.Application
-import com.otterland.foundation.systeminfo.DisplaySettingProvider
+import com.otterland.imageloader.systeminfo.DisplaySettingProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

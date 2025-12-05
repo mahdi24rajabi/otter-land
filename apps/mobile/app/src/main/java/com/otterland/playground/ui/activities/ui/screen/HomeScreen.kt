@@ -16,7 +16,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.otterland.foundation.design.theme.OtterLandTheme
+import com.otterland.imageloader.design.theme.OtterLandTheme
 import com.otterland.playground.R
 import com.otterland.playground.ui.activities.ui.component.NavigationItem
 import com.otterland.playground.ui.activities.ui.design.navigationSuite

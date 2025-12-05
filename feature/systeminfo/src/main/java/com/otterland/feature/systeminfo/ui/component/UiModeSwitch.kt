@@ -16,9 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.otterland.foundation.design.efects.UiModeState
-import com.otterland.foundation.design.efects.changeUiMode
-import com.otterland.foundation.design.efects.displayUiModeState
+import com.otterland.imageloader.design.efects.UiModeState
+import com.otterland.imageloader.design.efects.changeUiMode
+import com.otterland.imageloader.design.efects.displayUiModeState
 
 @Composable
 fun UiModeSwitch(

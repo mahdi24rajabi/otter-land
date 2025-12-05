@@ -1,5 +1,5 @@
 [versions]
-agp = "8.13.0"
+agp = "8.13.1"
 ksp = "2.2.20-2.0.4"
 kotlin = "2.2.21"
 runtime = "1.9.4"
@@ -34,11 +34,12 @@ test-benchmark = "1.4.1"
 
 uiautomator = "2.3.0"
 benchmarkMacroJunit4 = "1.4.1"
-agpVersion = "8.13.0"
 junit = "1.3.0"
 espressoCore = "3.7.0"
 lifecycleRuntimeKtx = "2.10.0"
 kotlinVersion = "2.0.21"
+agpVersion = "8.13.1"
+kotlin2 = "2.2.21"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -54,11 +55,11 @@ imageloader-coil-bom = { module = "io.coil-kt.coil3:coil-bom", version.ref = "im
 imageloader-coil-compose = { module = "io.coil-kt.coil3:coil-compose" }
 imageloader-coil = { module = "io.coil-kt.coil3:coil" }
 imageloader-coil-core = { module = "io.coil-kt.coil3:coil-core" }
-imageloader-coil-network-core = { module = "io.coil-kt.coil3:coil-network-core-android" }
+imageloader-coil-network-core = { module = "io.coil-kt.coil3:coil-network-core-android", version.ref = "imageloader-coil"}
 imageloader-coil-gif = { module = "io.coil-kt.coil3:coil-gif" }
 imageloader-coil-svg = { module = "io.coil-kt.coil3:coil-svg" }
 imageloader-coil-video = { module = "io.coil-kt.coil3:coil-video" }
-imageloader-coil-android = { module = "io.coil-kt.coil3:coil-core-android" }
+
 imageloader-coil-cache-strategy = { module = "io.coil-kt.coil3:coil-network-cache-control" }
 imageloader-coil-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp" }
 
@@ -109,6 +110,7 @@ gradle-kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serializat
 gradle-kotlin-ksp = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 gradle-android-compose-compiler = { module = "org.jetbrains.kotlin.plugin.compose:org.jetbrains.kotlin.plugin.compose.gradle.plugin", version.ref = "kotlin" }
 gradle-dependency-injection-hitl = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "dagger-hilt" }
+gradle-baseprofile = { module = "androidx.baselineprofile:androidx.baselineprofile.gradle.plugin", version.ref="test-benchmark" }
 androidx-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtime" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -127,8 +129,5 @@ android-ui-compose = { id = "android-ui-compose" }
 android-ui-libraries = { id = "android-ui-libraries" }
 android-dependency-injection = { id = "android-dependency-injection" }
 android-mackrobenchmark = { id = "android-app-benchmark" }
-android-test-dependecies = { id = "android-test-dependency" }
-android-kotlin = { id = "org.jetbrains.kotlin.android" }
-baselineprofile = { id = "androidx.baselineprofile", version.ref = "test-benchmark" }
-com-android-application = { id = "com.android.application", version.ref = "agpVersion" }
-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlinVersion" }
+android-test = { id = "com.android.test", version.ref = "agpVersion" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin2" }

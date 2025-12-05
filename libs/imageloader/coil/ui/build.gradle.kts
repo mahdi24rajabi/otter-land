@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.otterland.foundation.imagaloader.coil.ui"
+    namespace = "com.otterland.imageloader.coil.ui"
 }
 
 dependencies {

@@ -21,7 +21,7 @@ sealed class Route() {
     object MemoryInfo : Route()
 }
 
-internal fun NavGraphBuilder.createSystemInfoNavigationGraph(navigate: (Route) -> Unit) {
+fun NavGraphBuilder.createSystemInfoNavigationGraph(navigate: (Route) -> Unit) {
     composable<Route.SystemInfoList> { backStackEntry ->
         SystemInfoScreen { route ->
             navigate(route)

@@ -23,16 +23,10 @@ android {
     }
 
     buildTypes {
-        debug {
-            isMinifyEnabled = false
+        getByName("debug") {
         }
 
-        release {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+        getByName("release") {
         }
     }
 
@@ -46,5 +40,5 @@ android {
 }
 
 dependencies {
-    androidTestImplementation("com.google.errorprone:error_prone_annotations:2.28.0")
+    androidTestImplementation("com.google.errorprone:error_prone_annotations:2.45.0")
 }
