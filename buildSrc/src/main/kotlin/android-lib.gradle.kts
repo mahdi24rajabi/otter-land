@@ -23,10 +23,11 @@ android {
     }
 
     buildTypes {
-        getByName("debug") {
-        }
-
-        getByName("release") {
+        maybeCreate("release")
+        maybeCreate("debug")
+        maybeCreate("benchmark").apply {
+            initWith(getByName("release"))
+            matchingFallbacks += listOf("release")
         }
     }
 
@@ -40,5 +41,5 @@ android {
 }
 
 dependencies {
-    androidTestImplementation("com.google.errorprone:error_prone_annotations:2.45.0")
+    androidTestImplementation("com.google.errorprone:error_prone_annotations:2.28.0")
 }

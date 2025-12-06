@@ -13,29 +13,27 @@ android {
         applicationId = "com.otterland.playground"
         versionCode = 2500000
         versionName = "25.0.000"
+        targetSdk = 36
+    }
+
+    signingConfigs {
+        maybeCreate("debug").apply {
+            storeFile = file( "../../../key_stores/debug_key.jks")
+            keyAlias = "otterland_debug"
+            keyPassword = "Test2025"
+            storePassword = "Test2025"
+        }
+        maybeCreate("release").apply {
+            storeFile = file("../../../key_stores/debug_key.jks")
+            keyAlias = "otterland_debug"
+            keyPassword = "Test2025"
+            storePassword = "Test2025"
+        }
     }
 
     buildTypes {
-        signingConfigs {
-            maybeCreate("debug").apply {
-                storeFile = file( "../../../key_stores/debug_key.jks")
-                keyAlias = "otterland_debug"
-                keyPassword = "Test2025"
-                storePassword = "Test2025"
-            }
-            maybeCreate("release").apply {
-                storeFile = file("../../../key_stores/debug_key.jks")
-                keyAlias = "otterland_debug"
-                keyPassword = "Test2025"
-                storePassword = "Test2025"
-            }
-        }
 
-        defaultConfig {
-            targetSdk = 36
-        }
-
-        debug {
+        maybeCreate("debug").apply {
             isDefault = true
             isMinifyEnabled = false
             applicationIdSuffix = ".debug"
@@ -43,8 +41,9 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
 
-        release {
+        maybeCreate("release").apply {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -52,15 +51,13 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
 
-        create("benchmarch"){
-            initWith(getByName("release"))
-            matchingFallbacks += listOf("release")
-        }
         create("benchmark") {
-            initWith(buildTypes.getByName("release"))
+            initWith(getByName("release"))
+            isProfileable = true
             matchingFallbacks += listOf("release")
-            isDebuggable = false
+            signingConfig = signingConfigs.getByName("debug")
         }
+
     }
 
     buildFeatures {

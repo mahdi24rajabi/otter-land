@@ -9,5 +9,5 @@ dependencies {
     implementation(libs.gradle.android.compose.compiler)
     implementation(libs.gradle.dependency.injection.hitl)
     implementation(libs.gradle.kotlin.ksp)
-    implementation(libs.gradle.baseprofile)
+    implementation(libs.gradle.macrobenchmark)
 }

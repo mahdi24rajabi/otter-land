@@ -37,9 +37,6 @@ benchmarkMacroJunit4 = "1.4.1"
 junit = "1.3.0"
 espressoCore = "3.7.0"
 lifecycleRuntimeKtx = "2.10.0"
-kotlinVersion = "2.0.21"
-agpVersion = "8.13.1"
-kotlin2 = "2.2.21"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -111,6 +108,7 @@ gradle-kotlin-ksp = { module = "com.google.devtools.ksp:com.google.devtools.ksp.
 gradle-android-compose-compiler = { module = "org.jetbrains.kotlin.plugin.compose:org.jetbrains.kotlin.plugin.compose.gradle.plugin", version.ref = "kotlin" }
 gradle-dependency-injection-hitl = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "dagger-hilt" }
 gradle-baseprofile = { module = "androidx.baselineprofile:androidx.baselineprofile.gradle.plugin", version.ref="test-benchmark" }
+gradle-macrobenchmark = { module = "androidx.benchmark:benchmark-gradle-plugin", version.ref="test-benchmark" }
 androidx-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtime" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -129,5 +127,3 @@ android-ui-compose = { id = "android-ui-compose" }
 android-ui-libraries = { id = "android-ui-libraries" }
 android-dependency-injection = { id = "android-dependency-injection" }
 android-mackrobenchmark = { id = "android-app-benchmark" }
-android-test = { id = "com.android.test", version.ref = "agpVersion" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin2" }
