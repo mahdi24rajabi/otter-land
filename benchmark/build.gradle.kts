@@ -33,7 +33,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.junit)
-    implementation(libs.androidx.espresso.core)
+    implementation(libs.test.androidx.espresso.core)
     implementation(libs.test.uiautomator)
     implementation(libs.test.benchmark.macro.junit4)
     implementation("androidx.tracing:tracing-perfetto:1.0.0")
