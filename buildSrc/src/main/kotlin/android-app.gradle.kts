@@ -40,8 +40,6 @@ android {
     }
 
     buildToolsVersion = "35.0.0"
-
-
 }
 
 dependencies {

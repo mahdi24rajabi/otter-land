@@ -31,6 +31,7 @@ test-androidx-junit="1.1.5"
 test-kotlin-coroutines="1.8.1"
 test-mokk="1.14.6"
 test-benchmark = "1.4.1"
+test-roboelctric = "4.13"
 
 uiautomator = "2.3.0"
 benchmarkMacroJunit4 = "1.4.1"
@@ -96,8 +97,14 @@ test-junit = {module = "junit:junit", version.ref = "test-junit"}
 #test-androidx-junit = {module = "androidx.test.ext:junit", version.ref = "test-androidx-junit"}
 test-kotlin-coroutines = {module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "test-kotlin-coroutines"}
 test-mokk = {module = "io.mockk:mockk", version.ref="test-mokk"}
-test-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "uiautomator" }
 test-benchmark-macro-junit4 = { group = "androidx.benchmark", name = "benchmark-macro-junit4", version.ref = "benchmarkMacroJunit4" }
+test-roboelectric = { module = "org.robolectric:robolectric" , version.ref = "test-roboelctric" }
+
+test-androidx-runner = { module = "androidx.test:runner" , version.ref = "test-androidx-junit" }
+test-androidx-rules = { module = "androidx.test:rules" , version.ref = "test-roboelctric" }
+test-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+test-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "uiautomator" }
+test-compose= { module = "androidx.compose.ui:ui-test-junit4", version.ref = "ui-compose" }
 
 
 #Plugin dependencies
@@ -111,7 +118,6 @@ gradle-baseprofile = { module = "androidx.baselineprofile:androidx.baselineprofi
 gradle-macrobenchmark = { module = "androidx.benchmark:benchmark-gradle-plugin", version.ref="test-benchmark" }
 androidx-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtime" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
@@ -127,3 +133,5 @@ android-ui-compose = { id = "android-ui-compose" }
 android-ui-libraries = { id = "android-ui-libraries" }
 android-dependency-injection = { id = "android-dependency-injection" }
 android-mackrobenchmark = { id = "android-app-benchmark" }
+android-test-dependency = { id = "android-local-test-dependency" }
+android-instrumentation-test-dependency = { id = "android-instrumentation-test-dependency" }
