@@ -1,9 +1,13 @@
 package com.otterland.playground.macrobenchmark
 
+import androidx.benchmark.macro.ExperimentalMetricApi
 import androidx.benchmark.macro.StartupMode
 import androidx.benchmark.macro.StartupTimingMetric
+import androidx.benchmark.macro.TraceMetric
+import androidx.benchmark.macro.TraceSectionMetric
 import androidx.benchmark.macro.junit4.MacrobenchmarkRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.uiautomator.By
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -36,6 +40,25 @@ class ExampleStartupBenchmark {
     ){
         pressHome()
         startActivityAndWait()
-        println("===================> StartUp is done.")
     }
+
+
+    @OptIn(ExperimentalMetricApi::class)
+    @Test
+    fun uiScroll() = benchmarkRule.measureRepeated(
+        packageName = "com.otterland.playground",
+        metrics = listOf(
+            TraceSectionMetric(""),
+        ),
+        iterations = 5,
+        startupMode = StartupMode.COLD,
+        setupBlock = {
+
+        },
+        measureBlock ={
+            pressHome()
+            startActivityAndWait()
+            device.findObject(By.text("Display"))?.click()
+        },
+    )
 }
