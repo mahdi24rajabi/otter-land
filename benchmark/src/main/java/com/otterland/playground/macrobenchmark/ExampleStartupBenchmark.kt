@@ -48,7 +48,7 @@ class ExampleStartupBenchmark {
     fun uiScroll() = benchmarkRule.measureRepeated(
         packageName = "com.otterland.playground",
         metrics = listOf(
-            TraceSectionMetric(""),
+            TraceSectionMetric("Display section"),
         ),
         iterations = 5,
         startupMode = StartupMode.COLD,
