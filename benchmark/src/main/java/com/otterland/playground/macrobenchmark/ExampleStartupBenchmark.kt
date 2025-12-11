@@ -1,6 +1,7 @@
 package com.otterland.playground.macrobenchmark
 
 import androidx.benchmark.macro.ExperimentalMetricApi
+import androidx.benchmark.macro.MemoryUsageMetric
 import androidx.benchmark.macro.StartupMode
 import androidx.benchmark.macro.StartupTimingMetric
 import androidx.benchmark.macro.TraceMetric
@@ -48,7 +49,7 @@ class ExampleStartupBenchmark {
     fun uiScroll() = benchmarkRule.measureRepeated(
         packageName = "com.otterland.playground",
         metrics = listOf(
-            TraceSectionMetric("Display section"),
+            MemoryUsageMetric(MemoryUsageMetric.Mode.Max),
         ),
         iterations = 5,
         startupMode = StartupMode.COLD,
