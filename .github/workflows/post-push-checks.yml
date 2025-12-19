@@ -9,6 +9,7 @@ jobs:
     steps:
       - uses: actions/setup-java@v5.1.0
         with: 
+          distribution: 'temurin'
           java-version: 21
       - uses: actions/checkout@v6.0.1
         with:
