@@ -4,7 +4,7 @@ run-name: Lint check on ${{ github.ref_name }}
 on: [push]
 
 jobs:
-  Lint:
+  lint:
     runs-on: ubunto-latest
     steps:
       - run: echo ${{ github.ref_name }}
