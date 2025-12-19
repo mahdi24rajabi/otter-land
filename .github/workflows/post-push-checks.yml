@@ -1,5 +1,5 @@
 name: Lint
-run-name: Lint check on
+run-name: Lint check on ${{ github.ref_name }}
 
 on: [push]
 
