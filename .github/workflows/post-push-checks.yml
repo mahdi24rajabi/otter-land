@@ -5,7 +5,7 @@ on: [push]
 
 jobs:
   lint:
-    runs-on: ubunto-latest
+    runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.ref_name }}
       - uses: actions/checkout@v6.0.1
