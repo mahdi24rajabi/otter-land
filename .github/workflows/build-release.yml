@@ -1,8 +1,8 @@
 name: Release Build
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
-job: 
-  build-release-version
+jobs: 
+  build-release-version:
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v5
